@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================
+   CSS Custom Properties (Design Tokens)
+   ========================================== */
+
+@layer base {
+  :root {
+    /* Dark theme (default) */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 95%;
+
+    --border: 0 0% 15%;
+
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+  }
+
+  /* Light theme (optional - activate via class) */
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+
+    --border: 0 0% 90%;
+
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+  }
+}
+
+/* ==========================================
+   Base Styles
+   ========================================== */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+
+  /* Improve text rendering */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-balance;
+  }
+
+  p {
+    @apply text-pretty;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent/50 ring-offset-2 ring-offset-background;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-accent/20 text-foreground;
+  }
+}
+
+/* ==========================================
+   Utilities
+   ========================================== */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+/* ==========================================
+   Animations
+   ========================================== */
+
+@layer utilities {
+  .animate-in {
+    animation: animate-in 0.5s ease-out forwards;
+  }
+
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ==========================================
+   Scrollbar Styling (optional)
+   ========================================== */
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
