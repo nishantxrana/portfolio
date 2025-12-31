@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="20" fill="#0a0a0a"/>
-  <text x="50" y="68" font-family="system-ui, sans-serif" font-size="50" font-weight="700" fill="#10b981" text-anchor="middle">N</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#050508"/>
+  <circle cx="16" cy="16" r="4" fill="#10b981"/>
+  <circle cx="16" cy="16" r="7" fill="none" stroke="#10b981" stroke-width="1" stroke-dasharray="2 2" opacity="0.5"/>
+  <circle cx="16" cy="16" r="11" fill="none" stroke="#10b981" stroke-width="0.5" opacity="0.3"/>
 </svg>
-

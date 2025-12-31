@@ -3,159 +3,71 @@
 @tailwind utilities;
 
 /* ==========================================
-   DESIGN SYSTEM: Engineer's Terminal
-   ========================================== */
-
-@layer base {
-  :root {
-    /* Base - Deep terminal black */
-    --background: 220 20% 4%;
-    --foreground: 210 20% 92%;
-
-    /* Muted - Subdued grays */
-    --muted: 220 15% 12%;
-    --muted-foreground: 220 10% 55%;
-
-    /* Card surfaces */
-    --card: 220 18% 7%;
-    --card-foreground: 210 20% 92%;
-
-    /* Borders - Subtle definition */
-    --border: 220 15% 16%;
-    --border-highlight: 220 15% 22%;
-
-    /* Terminal green - Primary accent */
-    --accent: 142 70% 45%;
-    --accent-foreground: 142 70% 95%;
-    --accent-muted: 142 50% 20%;
-
-    /* Secondary accents */
-    --cyan: 185 70% 50%;
-    --amber: 38 90% 55%;
-    --red: 0 70% 55%;
-
-    /* Code/mono background */
-    --code-bg: 220 20% 10%;
-  }
-}
-
-/* ==========================================
-   Base Styles
+   SPATIAL CANVAS - System Map Portfolio
    ========================================== */
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-white/10;
   }
 
-  html {
-    @apply scroll-smooth;
-    scroll-padding-top: 6rem;
+  html, body, #root {
+    @apply h-full w-full overflow-hidden;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: 'ss01', 'ss02', 'cv01';
-  }
-
-  /* Engineering typography */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-medium tracking-tight;
-  }
-
-  code, pre, .font-mono {
-    font-feature-settings: 'liga' 0;
+    @apply bg-[#050508] text-white antialiased;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    @apply bg-accent/30 text-foreground;
+    @apply bg-emerald-500/30 text-white;
   }
 
   :focus-visible {
-    @apply outline-none ring-1 ring-accent ring-offset-1 ring-offset-background;
+    @apply outline-none ring-1 ring-emerald-500/50;
   }
 }
 
 /* ==========================================
-   Terminal UI Elements
-   ========================================== */
-
-@layer components {
-  /* Terminal prompt */
-  .terminal-prompt::before {
-    content: '$ ';
-    @apply text-accent font-mono;
-  }
-
-  /* Blinking cursor */
-  .cursor-blink::after {
-    content: '█';
-    @apply text-accent animate-pulse;
-  }
-
-  /* Status indicator */
-  .status-dot {
-    @apply relative flex h-2 w-2;
-  }
-
-  .status-dot::before {
-    content: '';
-    @apply absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75;
-  }
-
-  .status-dot::after {
-    content: '';
-    @apply relative inline-flex h-2 w-2 rounded-full bg-accent;
-  }
-
-  /* Node connector lines */
-  .node-line {
-    @apply absolute border-l border-dashed border-border;
-  }
-
-  /* Code block styling */
-  .code-block {
-    @apply rounded border border-border bg-[hsl(var(--code-bg))] font-mono text-sm;
-  }
-
-  /* Metric highlight */
-  .metric {
-    @apply font-mono text-accent;
-  }
-
-  /* Tag/label styling */
-  .tech-tag {
-    @apply inline-flex items-center rounded border border-border bg-muted/50 px-2 py-0.5 font-mono text-xs text-muted-foreground;
-  }
-
-  /* Section divider */
-  .section-divider {
-    @apply border-t border-dashed border-border;
-  }
-}
-
-/* ==========================================
-   Grid Background Pattern
+   Canvas Utilities
    ========================================== */
 
 @layer utilities {
-  .bg-grid {
-    background-image: 
-      linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    background-size: 24px 24px;
+  /* Prevent text selection during drag */
+  .no-select {
+    user-select: none;
+    -webkit-user-select: none;
   }
 
-  .bg-grid-large {
-    background-image: 
-      linear-gradient(to right, hsl(var(--border) / 0.2) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.2) 1px, transparent 1px);
-    background-size: 64px 64px;
+  /* Smooth transitions for canvas transforms */
+  .canvas-transition {
+    transition: transform 0.1s ease-out;
+  }
+}
+
+/* ==========================================
+   Custom Scrollbar (for panels)
+   ========================================== */
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
   }
 
-  /* Fade edges */
-  .fade-edges {
-    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded bg-white/10;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-white/20;
   }
 }
 
@@ -164,50 +76,46 @@
    ========================================== */
 
 @layer utilities {
-  .animate-in {
-    animation: animate-in 0.4s ease-out forwards;
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
   }
 
-  @keyframes animate-in {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
   }
 
-  .animate-fade {
-    animation: fade 0.3s ease-out forwards;
-  }
-
-  @keyframes fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
 
 /* ==========================================
-   Scrollbar
+   Node Glow Effects
    ========================================== */
 
-@layer base {
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+@layer components {
+  .node-glow-emerald {
+    box-shadow: 
+      0 0 20px rgba(16, 185, 129, 0.1),
+      inset 0 0 20px rgba(16, 185, 129, 0.05);
   }
 
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
+  .node-glow-cyan {
+    box-shadow: 
+      0 0 20px rgba(6, 182, 212, 0.1),
+      inset 0 0 20px rgba(6, 182, 212, 0.05);
   }
 
-  ::-webkit-scrollbar-thumb {
-    @apply rounded bg-border;
+  .node-glow-amber {
+    box-shadow: 
+      0 0 20px rgba(245, 158, 11, 0.1),
+      inset 0 0 20px rgba(245, 158, 11, 0.05);
   }
 
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/30;
+  .node-glow-violet {
+    box-shadow: 
+      0 0 20px rgba(139, 92, 246, 0.1),
+      inset 0 0 20px rgba(139, 92, 246, 0.05);
   }
 }
