@@ -3,39 +3,39 @@
 @tailwind utilities;
 
 /* ==========================================
-   DESIGN SYSTEM: Engineer's Terminal
+   DESIGN SYSTEM: Engineer's Terminal v3
+   Refinement pass: premium, intentional
    ========================================== */
 
 @layer base {
   :root {
     /* Base - Deep terminal black */
     --background: 220 20% 4%;
-    --foreground: 210 20% 92%;
+    --background-alt: 220 18% 5.5%;
+    --foreground: 210 15% 90%;
 
-    /* Muted - Subdued grays */
-    --muted: 220 15% 12%;
-    --muted-foreground: 220 10% 55%;
+    /* Muted - Refined grays */
+    --muted: 220 15% 11%;
+    --muted-foreground: 220 10% 50%;
 
-    /* Card surfaces */
-    --card: 220 18% 7%;
-    --card-foreground: 210 20% 92%;
+    /* Card surfaces - subtle differentiation */
+    --card: 220 18% 6.5%;
+    --card-foreground: 210 15% 90%;
 
-    /* Borders - Subtle definition */
-    --border: 220 15% 16%;
-    --border-highlight: 220 15% 22%;
+    /* Borders - lighter touch */
+    --border: 220 12% 14%;
+    --border-highlight: 220 12% 20%;
 
-    /* Terminal green - Primary accent */
-    --accent: 142 70% 45%;
-    --accent-foreground: 142 70% 95%;
-    --accent-muted: 142 50% 20%;
+    /* Primary accent - reserved for actions/status */
+    --accent: 152 60% 42%;
+    --accent-foreground: 152 60% 95%;
 
-    /* Secondary accents */
-    --cyan: 185 70% 50%;
-    --amber: 38 90% 55%;
-    --red: 0 70% 55%;
+    /* Secondary - for subtle hints only */
+    --cyan: 185 50% 45%;
+    --amber: 38 70% 50%;
 
-    /* Code/mono background */
-    --code-bg: 220 20% 10%;
+    /* Code background */
+    --code-bg: 220 18% 8%;
   }
 }
 
@@ -50,57 +50,48 @@
 
   html {
     @apply scroll-smooth;
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 5rem;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: 'ss01', 'ss02', 'cv01';
+    font-feature-settings: 'cv01', 'cv02', 'cv03';
   }
 
-  /* Engineering typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-medium tracking-tight;
+    @apply tracking-tight;
+    font-weight: 500;
   }
+
+  h1 { font-weight: 600; }
 
   code, pre, .font-mono {
-    font-feature-settings: 'liga' 0;
+    font-feature-settings: 'liga' 0, 'calt' 0;
   }
 
   ::selection {
-    @apply bg-accent/30 text-foreground;
+    @apply bg-accent/25 text-foreground;
   }
 
   :focus-visible {
-    @apply outline-none ring-1 ring-accent ring-offset-1 ring-offset-background;
+    @apply outline-none ring-1 ring-accent/50 ring-offset-1 ring-offset-background;
   }
 }
 
 /* ==========================================
-   Terminal UI Elements
+   Components
    ========================================== */
 
 @layer components {
-  /* Terminal prompt */
-  .terminal-prompt::before {
-    content: '$ ';
-    @apply text-accent font-mono;
-  }
-
-  /* Blinking cursor */
-  .cursor-blink::after {
-    content: '█';
-    @apply text-accent animate-pulse;
-  }
-
-  /* Status indicator */
+  /* Status indicator - accent reserved */
   .status-dot {
     @apply relative flex h-2 w-2;
   }
 
   .status-dot::before {
     content: '';
-    @apply absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75;
+    @apply absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60;
+    animation-duration: 2s;
   }
 
   .status-dot::after {
@@ -108,70 +99,66 @@
     @apply relative inline-flex h-2 w-2 rounded-full bg-accent;
   }
 
-  /* Node connector lines */
-  .node-line {
-    @apply absolute border-l border-dashed border-border;
-  }
-
-  /* Code block styling */
-  .code-block {
-    @apply rounded border border-border bg-[hsl(var(--code-bg))] font-mono text-sm;
-  }
-
-  /* Metric highlight */
-  .metric {
-    @apply font-mono text-accent;
-  }
-
-  /* Tag/label styling */
+  /* Tech tag - neutral by default */
   .tech-tag {
-    @apply inline-flex items-center rounded border border-border bg-muted/50 px-2 py-0.5 font-mono text-xs text-muted-foreground;
+    @apply inline-flex items-center rounded border border-border/80 bg-muted/40 px-2 py-0.5 font-mono text-xs text-muted-foreground transition-colors;
   }
 
-  /* Section divider */
+  .tech-tag:hover {
+    @apply border-border text-foreground/80;
+  }
+
+  /* Section divider - softer */
   .section-divider {
-    @apply border-t border-dashed border-border;
+    @apply border-t border-border/50;
+  }
+
+  /* Label style - subtle */
+  .section-label {
+    @apply font-mono text-xs uppercase tracking-widest text-muted-foreground/70;
+  }
+
+  /* Metric value - weight not color */
+  .metric-value {
+    @apply font-mono text-2xl font-semibold text-foreground;
+  }
+
+  .metric-label {
+    @apply font-mono text-xs text-muted-foreground/80;
   }
 }
 
 /* ==========================================
-   Grid Background Pattern
+   Backgrounds
    ========================================== */
 
 @layer utilities {
   .bg-grid {
     background-image: 
-      linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    background-size: 24px 24px;
+      linear-gradient(to right, hsl(var(--border) / 0.25) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.25) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 
-  .bg-grid-large {
-    background-image: 
-      linear-gradient(to right, hsl(var(--border) / 0.2) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.2) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
-
-  /* Fade edges */
-  .fade-edges {
-    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  .bg-section-alt {
+    background-color: hsl(var(--background-alt));
   }
 }
 
 /* ==========================================
-   Animations
+   Animations - refined
    ========================================== */
 
 @layer utilities {
   .animate-in {
-    animation: animate-in 0.4s ease-out forwards;
+    animation: animate-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
   }
 
   @keyframes animate-in {
     from {
       opacity: 0;
-      transform: translateY(8px);
+      transform: translateY(12px);
     }
     to {
       opacity: 1;
@@ -179,14 +166,12 @@
     }
   }
 
-  .animate-fade {
-    animation: fade 0.3s ease-out forwards;
-  }
-
-  @keyframes fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+  /* Stagger delays */
+  .delay-1 { animation-delay: 50ms; }
+  .delay-2 { animation-delay: 100ms; }
+  .delay-3 { animation-delay: 150ms; }
+  .delay-4 { animation-delay: 200ms; }
+  .delay-5 { animation-delay: 250ms; }
 }
 
 /* ==========================================
@@ -204,10 +189,10 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded bg-border;
+    @apply rounded-full bg-border/60;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/30;
+    @apply bg-border;
   }
 }

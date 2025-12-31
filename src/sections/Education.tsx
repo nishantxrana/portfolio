@@ -6,41 +6,39 @@ export function Education() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-12 flex items-center gap-4">
-          <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
+          <h2 className="section-label">
             credentials.log
           </h2>
-          <div className="h-px flex-1 bg-border" />
+          <div className="h-px flex-1 bg-border/40" />
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-12 lg:grid-cols-2">
           {/* Education */}
           <div>
             <div className="mb-6 flex items-center gap-2">
-              <span className="font-mono text-xs text-accent">01</span>
-              <span className="font-mono text-sm text-foreground">Education</span>
+              <span className="font-mono text-xs text-muted-foreground/50">01</span>
+              <span className="text-sm font-medium text-foreground">Education</span>
             </div>
 
             <div className="space-y-3">
               {education.map((edu, index) => (
                 <div
                   key={edu.id}
-                  className={`rounded border border-border bg-card/30 p-4 ${
-                    index === 0 ? 'border-accent/30' : ''
-                  }`}
+                  className={`rounded bg-card/40 p-4 ${index === 0 ? 'border-l-2 border-accent/50' : ''}`}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="font-medium text-foreground">{edu.degree}</p>
-                      <p className="mt-1 font-mono text-xs text-muted-foreground">
+                      <p className="mt-1 font-mono text-xs text-muted-foreground/70">
                         {edu.institution}
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="font-mono text-xs text-muted-foreground">
+                      <p className="font-mono text-xs text-muted-foreground/60">
                         {edu.period}
                       </p>
                       {edu.score && (
-                        <p className="mt-1 font-mono text-xs text-accent">
+                        <p className="mt-1 font-mono text-xs text-foreground/70">
                           {edu.score}
                         </p>
                       )}
@@ -54,46 +52,42 @@ export function Education() {
           {/* Certifications */}
           <div>
             <div className="mb-6 flex items-center gap-2">
-              <span className="font-mono text-xs text-accent">02</span>
-              <span className="font-mono text-sm text-foreground">
-                Certifications
-              </span>
+              <span className="font-mono text-xs text-muted-foreground/50">02</span>
+              <span className="text-sm font-medium text-foreground">Certifications</span>
             </div>
 
             <div className="space-y-3">
               {certifications.map((cert) => (
                 <div
                   key={cert.id}
-                  className="rounded border border-accent/30 bg-accent/5 p-4"
+                  className="rounded border-l-2 border-accent/50 bg-accent/5 p-4"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="font-medium text-foreground">{cert.name}</p>
-                      <p className="mt-1 font-mono text-xs text-accent">
+                      <p className="mt-1 font-mono text-xs text-muted-foreground">
                         {cert.issuer}
                       </p>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="rounded bg-accent/20 px-2 py-0.5 font-mono text-xs text-accent">
-                        {cert.date}
-                      </span>
-                    </div>
+                    <span className="rounded bg-accent/10 px-2 py-0.5 font-mono text-xs text-accent">
+                      {cert.date}
+                    </span>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Certification badge visual */}
-            <div className="mt-6 flex items-center gap-3 rounded border border-border bg-card/30 p-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded bg-[#0078d4] font-mono text-sm font-bold text-white">
+            {/* Badge */}
+            <div className="mt-6 flex items-center gap-3 rounded bg-card/40 p-4">
+              <div className="flex h-10 w-10 items-center justify-center rounded bg-[#0078d4]/20 font-mono text-sm font-semibold text-[#0078d4]">
                 MS
               </div>
               <div>
-                <p className="font-mono text-xs text-muted-foreground">
+                <p className="font-mono text-xs text-muted-foreground/70">
                   Microsoft Certified
                 </p>
                 <p className="font-mono text-sm text-foreground">
-                  2x Azure Associate
+                  2× Azure Associate
                 </p>
               </div>
             </div>

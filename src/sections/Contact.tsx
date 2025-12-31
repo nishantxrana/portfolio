@@ -5,88 +5,84 @@ export function Contact() {
   const { email, resumeUrl, social } = siteConfig
 
   return (
-    <section id="contact" className="relative py-20">
+    <section id="contact" className="relative bg-section-alt py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-12 flex items-center gap-4">
-          <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
+          <h2 className="section-label">
             connect.interface
           </h2>
-          <div className="h-px flex-1 bg-border" />
+          <div className="h-px flex-1 bg-border/40" />
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-2">
+        <div className="grid gap-16 lg:grid-cols-2">
           {/* Left: Message */}
           <div>
             <h3 className="mb-4 text-2xl font-medium text-foreground">
               Let's build something together
             </h3>
-            <p className="mb-8 text-muted-foreground">
+            <p className="mb-10 text-muted-foreground">
               Open to discussing production systems, DevOps challenges, cloud
-              architecture, or new opportunities. My inbox is always open.
+              architecture, or new opportunities.
             </p>
 
-            {/* Terminal-style contact */}
-            <div className="rounded-lg border border-border bg-card/50 font-mono text-sm">
-              {/* Terminal header */}
-              <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <span className="h-3 w-3 rounded-full bg-red/50" />
-                <span className="h-3 w-3 rounded-full bg-amber/50" />
-                <span className="h-3 w-3 rounded-full bg-accent/50" />
-                <span className="ml-2 text-xs text-muted-foreground">
+            {/* Terminal */}
+            <div className="rounded-lg bg-card/60 font-mono text-sm">
+              {/* Header */}
+              <div className="flex items-center gap-2 border-b border-border/30 px-4 py-2.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/20" />
+                <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/20" />
+                <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/20" />
+                <span className="ml-2 text-xs text-muted-foreground/50">
                   connect.sh
                 </span>
               </div>
 
-              {/* Terminal content */}
-              <div className="p-4 text-muted-foreground">
-                <p className="mb-3 text-muted-foreground/60">
-                  # available connection methods
+              {/* Content */}
+              <div className="p-4 text-muted-foreground/80">
+                <p className="mb-4 text-muted-foreground/40">
+                  # connection methods
                 </p>
 
-                <div className="space-y-2">
-                  <p>
-                    <span className="text-accent">$</span> echo $EMAIL
-                  </p>
-                  <p className="pl-4 text-foreground">{email}</p>
+                <div className="space-y-3">
+                  <div>
+                    <p><span className="text-accent">$</span> echo $EMAIL</p>
+                    <p className="pl-3 text-foreground">{email}</p>
+                  </div>
 
                   {social.github && (
-                    <>
-                      <p>
-                        <span className="text-accent">$</span> echo $GITHUB
-                      </p>
-                      <p className="pl-4">
+                    <div>
+                      <p><span className="text-accent">$</span> echo $GITHUB</p>
+                      <p className="pl-3">
                         <a
                           href={social.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-cyan hover:underline"
+                          className="text-foreground/80 hover:text-foreground hover:underline"
                         >
                           {social.github.replace('https://', '')}
                         </a>
                       </p>
-                    </>
+                    </div>
                   )}
 
                   {social.linkedin && (
-                    <>
-                      <p>
-                        <span className="text-accent">$</span> echo $LINKEDIN
-                      </p>
-                      <p className="pl-4">
+                    <div>
+                      <p><span className="text-accent">$</span> echo $LINKEDIN</p>
+                      <p className="pl-3">
                         <a
                           href={social.linkedin}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-cyan hover:underline"
+                          className="text-foreground/80 hover:text-foreground hover:underline"
                         >
                           {social.linkedin.replace('https://', '')}
                         </a>
                       </p>
-                    </>
+                    </div>
                   )}
 
-                  <p className="mt-4 text-muted-foreground/60">
+                  <p className="mt-6 text-muted-foreground/40">
                     # status: <span className="text-accent">available</span>
                   </p>
                 </div>
@@ -94,15 +90,15 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Right: Quick actions */}
+          {/* Right: Actions */}
           <div className="flex flex-col justify-center">
             <div className="space-y-4">
               {/* Primary CTA */}
               <a
                 href={`mailto:${email}`}
-                className="group flex items-center justify-between rounded-lg border border-accent bg-accent/10 p-4 transition-colors hover:bg-accent/20"
+                className="group flex items-center justify-between rounded-lg border border-accent bg-accent/5 p-5 transition-colors hover:bg-accent/10"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                   <Icon name="email" size={20} className="text-accent" />
                   <div>
                     <p className="font-medium text-foreground">Send an email</p>
@@ -118,25 +114,23 @@ export function Contact() {
                 />
               </a>
 
-              {/* Resume download */}
+              {/* Resume */}
               {resumeUrl && (
                 <a
                   href={resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between rounded-lg border border-border p-4 transition-colors hover:border-accent/50"
+                  className="group flex items-center justify-between rounded-lg border border-border/50 p-5 transition-colors hover:border-border hover:bg-card/40"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-4">
                     <Icon
                       name="download"
                       size={20}
                       className="text-muted-foreground"
                     />
                     <div>
-                      <p className="font-medium text-foreground">
-                        Download Resume
-                      </p>
-                      <p className="font-mono text-xs text-muted-foreground">
+                      <p className="font-medium text-foreground">Download Resume</p>
+                      <p className="font-mono text-xs text-muted-foreground/70">
                         PDF format
                       </p>
                     </div>
@@ -149,16 +143,16 @@ export function Contact() {
                 </a>
               )}
 
-              {/* Social links */}
-              <div className="flex gap-3 pt-4">
+              {/* Social */}
+              <div className="flex gap-2 pt-4">
                 {social.github && (
                   <a
                     href={social.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-12 w-12 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-accent/50 hover:text-foreground"
+                    className="flex h-11 w-11 items-center justify-center rounded-lg border border-border/50 text-muted-foreground transition-colors hover:border-border hover:text-foreground"
                   >
-                    <Icon name="github" size={20} />
+                    <Icon name="github" size={18} />
                   </a>
                 )}
                 {social.linkedin && (
@@ -166,19 +160,9 @@ export function Contact() {
                     href={social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-12 w-12 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-accent/50 hover:text-foreground"
+                    className="flex h-11 w-11 items-center justify-center rounded-lg border border-border/50 text-muted-foreground transition-colors hover:border-border hover:text-foreground"
                   >
-                    <Icon name="linkedin" size={20} />
-                  </a>
-                )}
-                {social.twitter && (
-                  <a
-                    href={social.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-12 w-12 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-accent/50 hover:text-foreground"
-                  >
-                    <Icon name="twitter" size={20} />
+                    <Icon name="linkedin" size={18} />
                   </a>
                 )}
               </div>
