@@ -3,197 +3,60 @@
 @tailwind utilities;
 
 /* ==========================================
-   DESIGN SYSTEM: Engineer's Terminal
+   TERMINAL PORTFOLIO - Experimental v3
    ========================================== */
 
 @layer base {
   :root {
-    /* Base - Deep terminal black */
-    --background: 220 20% 4%;
-    --foreground: 210 20% 92%;
-
-    /* Muted - Subdued grays */
-    --muted: 220 15% 12%;
-    --muted-foreground: 220 10% 55%;
-
-    /* Card surfaces */
-    --card: 220 18% 7%;
-    --card-foreground: 210 20% 92%;
-
-    /* Borders - Subtle definition */
-    --border: 220 15% 16%;
-    --border-highlight: 220 15% 22%;
-
-    /* Terminal green - Primary accent */
-    --accent: 142 70% 45%;
-    --accent-foreground: 142 70% 95%;
-    --accent-muted: 142 50% 20%;
-
-    /* Secondary accents */
-    --cyan: 185 70% 50%;
-    --amber: 38 90% 55%;
-    --red: 0 70% 55%;
-
-    /* Code/mono background */
-    --code-bg: 220 20% 10%;
+    --terminal-bg: #0a0a0a;
+    --terminal-surface: #0d0d0d;
+    --terminal-border: #333;
+    --terminal-text: #e0e0e0;
+    --terminal-muted: #a0a0a0;
+    --terminal-dim: #666;
+    --terminal-green: #28ca41;
+    --terminal-blue: #5c78ff;
+    --terminal-red: #ff5f57;
+    --terminal-yellow: #ffbd2e;
   }
-}
 
-/* ==========================================
-   Base Styles
-   ========================================== */
-
-@layer base {
   * {
-    @apply border-border;
+    @apply border-[#333];
   }
 
   html {
     @apply scroll-smooth;
-    scroll-padding-top: 6rem;
+    font-size: 14px;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      font-size: 15px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 16px;
+    }
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: 'ss01', 'ss02', 'cv01';
-  }
-
-  /* Engineering typography */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-medium tracking-tight;
-  }
-
-  code, pre, .font-mono {
-    font-feature-settings: 'liga' 0;
+    @apply bg-[#0a0a0a] text-[#e0e0e0] antialiased;
+    font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Menlo', monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    @apply bg-accent/30 text-foreground;
+    @apply bg-[#28ca41]/30 text-white;
   }
 
   :focus-visible {
-    @apply outline-none ring-1 ring-accent ring-offset-1 ring-offset-background;
-  }
-}
-
-/* ==========================================
-   Terminal UI Elements
-   ========================================== */
-
-@layer components {
-  /* Terminal prompt */
-  .terminal-prompt::before {
-    content: '$ ';
-    @apply text-accent font-mono;
+    @apply outline-none ring-1 ring-[#28ca41] ring-offset-1 ring-offset-[#0a0a0a];
   }
 
-  /* Blinking cursor */
-  .cursor-blink::after {
-    content: '█';
-    @apply text-accent animate-pulse;
-  }
-
-  /* Status indicator */
-  .status-dot {
-    @apply relative flex h-2 w-2;
-  }
-
-  .status-dot::before {
-    content: '';
-    @apply absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75;
-  }
-
-  .status-dot::after {
-    content: '';
-    @apply relative inline-flex h-2 w-2 rounded-full bg-accent;
-  }
-
-  /* Node connector lines */
-  .node-line {
-    @apply absolute border-l border-dashed border-border;
-  }
-
-  /* Code block styling */
-  .code-block {
-    @apply rounded border border-border bg-[hsl(var(--code-bg))] font-mono text-sm;
-  }
-
-  /* Metric highlight */
-  .metric {
-    @apply font-mono text-accent;
-  }
-
-  /* Tag/label styling */
-  .tech-tag {
-    @apply inline-flex items-center rounded border border-border bg-muted/50 px-2 py-0.5 font-mono text-xs text-muted-foreground;
-  }
-
-  /* Section divider */
-  .section-divider {
-    @apply border-t border-dashed border-border;
-  }
-}
-
-/* ==========================================
-   Grid Background Pattern
-   ========================================== */
-
-@layer utilities {
-  .bg-grid {
-    background-image: 
-      linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  .bg-grid-large {
-    background-image: 
-      linear-gradient(to right, hsl(var(--border) / 0.2) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.2) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
-
-  /* Fade edges */
-  .fade-edges {
-    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-  }
-}
-
-/* ==========================================
-   Animations
-   ========================================== */
-
-@layer utilities {
-  .animate-in {
-    animation: animate-in 0.4s ease-out forwards;
-  }
-
-  @keyframes animate-in {
-    from {
-      opacity: 0;
-      transform: translateY(8px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade {
-    animation: fade 0.3s ease-out forwards;
-  }
-
-  @keyframes fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-}
-
-/* ==========================================
-   Scrollbar
-   ========================================== */
-
-@layer base {
+  /* Hide scrollbar for Chrome, Safari and Opera */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -204,10 +67,88 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded bg-border;
+    @apply rounded bg-[#333];
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-muted-foreground/30;
+    @apply bg-[#444];
+  }
+}
+
+/* ==========================================
+   Terminal Animations
+   ========================================== */
+
+@layer utilities {
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .animate-type {
+    animation: type 0.1s steps(1) forwards;
+  }
+
+  @keyframes type {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* ==========================================
+   Terminal Chrome
+   ========================================== */
+
+@layer components {
+  .terminal-window {
+    @apply rounded-lg border border-[#333] bg-[#0d0d0d];
+  }
+
+  .terminal-header {
+    @apply flex items-center gap-2 border-b border-[#333] px-4 py-2;
+  }
+
+  .terminal-dots {
+    @apply flex gap-1.5;
+  }
+
+  .terminal-dot {
+    @apply h-3 w-3 rounded-full;
+  }
+
+  .terminal-dot-red {
+    @apply bg-[#ff5f57];
+  }
+
+  .terminal-dot-yellow {
+    @apply bg-[#ffbd2e];
+  }
+
+  .terminal-dot-green {
+    @apply bg-[#28ca41];
+  }
+
+  .terminal-body {
+    @apply p-4;
+  }
+
+  .terminal-prompt {
+    @apply flex items-start gap-2;
+  }
+
+  .terminal-user {
+    @apply text-[#28ca41];
+  }
+
+  .terminal-path {
+    @apply text-[#5c78ff];
+  }
+
+  .terminal-cursor {
+    @apply animate-pulse text-[#28ca41];
   }
 }
