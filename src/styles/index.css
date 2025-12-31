@@ -3,42 +3,39 @@
 @tailwind utilities;
 
 /* ==========================================
-   CSS Custom Properties (Design Tokens)
+   DESIGN SYSTEM: Engineer's Terminal
    ========================================== */
 
 @layer base {
   :root {
-    /* Dark theme (default) */
-    --background: 0 0% 4%;
-    --foreground: 0 0% 95%;
+    /* Base - Deep terminal black */
+    --background: 220 20% 4%;
+    --foreground: 210 20% 92%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 60%;
+    /* Muted - Subdued grays */
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 10% 55%;
 
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 95%;
+    /* Card surfaces */
+    --card: 220 18% 7%;
+    --card-foreground: 210 20% 92%;
 
-    --border: 0 0% 15%;
+    /* Borders - Subtle definition */
+    --border: 220 15% 16%;
+    --border-highlight: 220 15% 22%;
 
-    --accent: 160 84% 39%;
-    --accent-foreground: 0 0% 100%;
-  }
+    /* Terminal green - Primary accent */
+    --accent: 142 70% 45%;
+    --accent-foreground: 142 70% 95%;
+    --accent-muted: 142 50% 20%;
 
-  /* Light theme (optional - activate via class) */
-  .light {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
+    /* Secondary accents */
+    --cyan: 185 70% 50%;
+    --amber: 38 90% 55%;
+    --red: 0 70% 55%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
-
-    --border: 0 0% 90%;
-
-    --accent: 160 84% 39%;
-    --accent-foreground: 0 0% 100%;
+    /* Code/mono background */
+    --code-bg: 220 20% 10%;
   }
 }
 
@@ -47,60 +44,118 @@
    ========================================== */
 
 @layer base {
-  *,
-  *::before,
-  *::after {
+  * {
     @apply border-border;
   }
 
   html {
     @apply scroll-smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings:
-      'rlig' 1,
-      'calt' 1;
+    font-feature-settings: 'ss01', 'ss02', 'cv01';
   }
 
-  /* Improve text rendering */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply text-balance;
+  /* Engineering typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium tracking-tight;
   }
 
-  p {
-    @apply text-pretty;
+  code, pre, .font-mono {
+    font-feature-settings: 'liga' 0;
   }
 
-  /* Focus styles */
-  :focus-visible {
-    @apply outline-none ring-2 ring-accent/50 ring-offset-2 ring-offset-background;
-  }
-
-  /* Selection */
   ::selection {
-    @apply bg-accent/20 text-foreground;
+    @apply bg-accent/30 text-foreground;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-1 ring-accent ring-offset-1 ring-offset-background;
   }
 }
 
 /* ==========================================
-   Utilities
+   Terminal UI Elements
+   ========================================== */
+
+@layer components {
+  /* Terminal prompt */
+  .terminal-prompt::before {
+    content: '$ ';
+    @apply text-accent font-mono;
+  }
+
+  /* Blinking cursor */
+  .cursor-blink::after {
+    content: '█';
+    @apply text-accent animate-pulse;
+  }
+
+  /* Status indicator */
+  .status-dot {
+    @apply relative flex h-2 w-2;
+  }
+
+  .status-dot::before {
+    content: '';
+    @apply absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75;
+  }
+
+  .status-dot::after {
+    content: '';
+    @apply relative inline-flex h-2 w-2 rounded-full bg-accent;
+  }
+
+  /* Node connector lines */
+  .node-line {
+    @apply absolute border-l border-dashed border-border;
+  }
+
+  /* Code block styling */
+  .code-block {
+    @apply rounded border border-border bg-[hsl(var(--code-bg))] font-mono text-sm;
+  }
+
+  /* Metric highlight */
+  .metric {
+    @apply font-mono text-accent;
+  }
+
+  /* Tag/label styling */
+  .tech-tag {
+    @apply inline-flex items-center rounded border border-border bg-muted/50 px-2 py-0.5 font-mono text-xs text-muted-foreground;
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply border-t border-dashed border-border;
+  }
+}
+
+/* ==========================================
+   Grid Background Pattern
    ========================================== */
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .bg-grid {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 
-  .text-pretty {
-    text-wrap: pretty;
+  .bg-grid-large {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border) / 0.2) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.2) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Fade edges */
+  .fade-edges {
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
   }
 }
 
@@ -110,29 +165,38 @@
 
 @layer utilities {
   .animate-in {
-    animation: animate-in 0.5s ease-out forwards;
+    animation: animate-in 0.4s ease-out forwards;
   }
 
   @keyframes animate-in {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(8px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
+
+  .animate-fade {
+    animation: fade 0.3s ease-out forwards;
+  }
+
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 }
 
 /* ==========================================
-   Scrollbar Styling (optional)
+   Scrollbar
    ========================================== */
 
 @layer base {
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -140,11 +204,10 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-muted;
+    @apply rounded bg-border;
   }
 
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-muted-foreground/30;
   }
 }
-

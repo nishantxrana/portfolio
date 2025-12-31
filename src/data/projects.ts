@@ -1,6 +1,7 @@
 // ==========================================
 // Projects Data
 // Source: RESUME.md
+// Format: Architecture case studies
 // ==========================================
 
 import type { Project } from '@/types'
@@ -10,13 +11,13 @@ export const projects: Project[] = [
     id: 'insightops',
     title: 'InsightOps',
     description:
-      'AI-Powered DevOps Monitoring & Automation Platform for real-time pipeline insights and intelligent failure analysis.',
-    techStack: ['Node.js', 'React', 'Azure DevOps REST API', 'OpenAI', 'Docker', 'Vite'],
+      'AI-powered DevOps monitoring platform that provides real-time pipeline observability and automated failure analysis. Built to reduce on-call overhead and accelerate incident response.',
+    techStack: ['Node.js', 'React', 'Azure DevOps API', 'OpenAI', 'Docker', 'Vite'],
     highlights: [
-      'Engineered an AI-driven platform to monitor Azure DevOps pipelines, builds, releases, and pull requests with real-time insights.',
-      'Implemented automated failure analysis and root-cause summaries using multi-provider AI models.',
-      'Integrated automated alerts to Google Chat, reducing manual monitoring and on-call overhead by approximately 70%.',
-      'Designed with an AI abstraction layer to support flexible model routing based on cost and use case.',
+      'Real-time monitoring of Azure DevOps pipelines, builds, releases, and PRs',
+      'AI-driven root-cause analysis using multi-provider model abstraction',
+      'Automated alerts to Google Chat — reduced manual monitoring by ~70%',
+      'Flexible model routing based on cost and use-case requirements',
     ],
     links: {
       github: 'https://github.com/nishantxrana/insightops',
@@ -26,16 +27,16 @@ export const projects: Project[] = [
     id: 'openpost',
     title: 'OpenPost',
     description:
-      'Full-Stack Blog Application with authentication, role-based access control, and comprehensive admin dashboard.',
+      'Full-stack blog platform with enterprise-grade auth, RBAC, and admin dashboard. Designed for scalability with optimized state management and performant APIs.',
     techStack: ['React', 'Redux Toolkit', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
     highlights: [
-      'Built a full-featured blogging platform with Google OAuth authentication and role-based access control.',
-      'Implemented features including post creation, search, pagination, dark mode, and user management.',
-      'Optimized backend APIs and frontend state management for improved performance and user experience.',
+      'Google OAuth + JWT-based authentication with role-based access control',
+      'Admin dashboard for user, post, and comment management',
+      'Search, pagination, dark mode — optimized for UX and performance',
+      'RESTful API design with proper error handling and validation',
     ],
     links: {
       github: 'https://github.com/nishantxrana/OpenPost',
     },
   },
 ]
-

@@ -28,6 +28,6 @@ export const siteConfig: SiteConfig = {
   },
 }
 
-// Professional summary - can also be moved to env if needed
-export const professionalSummary = `Software Engineer with strong experience in DevOps, Cloud Infrastructure, and Full Stack Development. Proven expertise in designing scalable CI/CD pipelines, containerized deployments on Azure Kubernetes Service (AKS), and infrastructure automation using Terraform. Passionate about building developer-focused platforms and improving system observability, performance, and automation.`
-
+// Kept for reference but not used in new design
+// The hero section uses inline technical copy instead
+export const professionalSummary = `Software Engineer specializing in production systems, DevOps automation, and cloud infrastructure. Building CI/CD pipelines, Kubernetes deployments, and infrastructure-as-code solutions. Focused on reliability, observability, and cost optimization.`

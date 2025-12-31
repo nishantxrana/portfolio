@@ -11,43 +11,30 @@ export default {
         'muted-foreground': 'hsl(var(--muted-foreground))',
         accent: 'hsl(var(--accent))',
         'accent-foreground': 'hsl(var(--accent-foreground))',
+        'accent-muted': 'hsl(var(--accent-muted))',
         border: 'hsl(var(--border))',
+        'border-highlight': 'hsl(var(--border-highlight))',
         card: 'hsl(var(--card))',
         'card-foreground': 'hsl(var(--card-foreground))',
+        cyan: 'hsl(var(--cyan))',
+        amber: 'hsl(var(--amber))',
+        red: 'hsl(var(--red))',
       },
       fontFamily: {
-        sans: [
-          'Inter',
-          'system-ui',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          'Segoe UI',
-          'Roboto',
-          'sans-serif',
-        ],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
+      },
+      fontSize: {
+        '2xs': ['0.625rem', { lineHeight: '1rem' }],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
       },
       animation: {
-        'fade-in': 'fade-in 0.6s ease-out forwards',
-        'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
-        'slide-in-left': 'slide-in-left 0.5s ease-out forwards',
-      },
-      keyframes: {
-        'fade-in': {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        'fade-in-up': {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        'slide-in-left': {
-          '0%': { opacity: '0', transform: 'translateX(-20px)' },
-          '100%': { opacity: '1', transform: 'translateX(0)' },
-        },
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },
   plugins: [],
 } satisfies Config
-
