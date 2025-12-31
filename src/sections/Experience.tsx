@@ -2,14 +2,14 @@ import { experiences } from '@/data'
 
 export function Experience() {
   return (
-    <section id="experience" className="relative bg-section-alt py-24">
+    <section id="experience" className="relative bg-section-alt py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-16 flex items-center gap-4">
           <h2 className="section-label">
             deployment.log
           </h2>
-          <div className="h-px flex-1 bg-border/40" />
+          <div className="h-px flex-1 bg-border/50" />
           <span className="font-mono text-xs text-muted-foreground/50">
             {experiences.length} {experiences.length === 1 ? 'entry' : 'entries'}
           </span>
@@ -18,7 +18,7 @@ export function Experience() {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line - softer */}
-          <div className="absolute left-0 top-0 hidden h-full w-px bg-border/40 md:left-32 md:block" />
+          <div className="absolute left-0 top-0 hidden h-full w-px bg-border/60 md:left-32 md:block" />
 
           {experiences.map((exp) => (
             <article key={exp.id} className="relative mb-20 last:mb-0">
@@ -40,7 +40,7 @@ export function Experience() {
                 </div>
 
                 {/* Content - softer card */}
-                <div className="rounded-lg bg-card/40 p-6 sm:p-8">
+                <div className="rounded-lg bg-card p-6 sm:p-8">
                   {/* Header */}
                   <div className="mb-8">
                     <h3 className="text-lg font-medium text-foreground">

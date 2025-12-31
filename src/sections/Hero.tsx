@@ -6,13 +6,13 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen pt-20">
-      {/* Grid background - softer */}
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-40" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+      {/* Grid background - lighter touch */}
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        {/* System header - more subtle */}
-        <div className="mb-16 flex items-center gap-3 font-mono text-xs text-muted-foreground/60">
+      <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        {/* Status bar */}
+        <div className="mb-12 flex items-center gap-3 font-mono text-xs text-muted-foreground">
           <span className="text-accent">▲</span>
           <span>system status</span>
           <span className="text-border">│</span>
@@ -24,60 +24,60 @@ export function Hero() {
           <span>{new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
         </div>
 
-        <div className="grid gap-16 lg:grid-cols-[1fr,380px] lg:gap-20">
+        <div className="grid gap-16 lg:grid-cols-[1fr,380px] lg:gap-24">
           {/* Left: Identity */}
           <div>
-            {/* Name */}
-            <div className="mb-8">
-              <p className="section-label mb-3">
+            {/* Name - confident, dominant */}
+            <div className="mb-10">
+              <p className="section-label mb-4">
                 engineer.identity
               </p>
-              <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl">
                 {name}
               </h1>
             </div>
 
-            {/* Role - typography hierarchy, not color */}
+            {/* Role */}
             <div className="mb-10">
-              <p className="text-xl font-medium text-foreground/90 sm:text-2xl">{title}</p>
-              <p className="mt-1 text-muted-foreground">{subtitle}</p>
+              <p className="text-xl font-medium text-foreground sm:text-2xl">{title}</p>
+              <p className="mt-2 text-muted-foreground">{subtitle}</p>
             </div>
 
-            {/* Mission - softer containment */}
-            <div className="mb-12 max-w-xl border-l border-border pl-4">
-              <p className="text-sm leading-relaxed text-muted-foreground">
+            {/* Mission */}
+            <div className="mb-14 max-w-xl border-l-2 border-border pl-5">
+              <p className="text-base leading-relaxed text-muted-foreground">
                 Building production systems that scale. Shipping CI/CD pipelines, 
                 Kubernetes deployments, and infrastructure automation. 
                 Reducing costs, improving observability, and making deployments boring.
               </p>
             </div>
 
-            {/* Metrics - weight emphasis, not color */}
-            <div className="mb-12 grid grid-cols-3 gap-8">
+            {/* Metrics */}
+            <div className="mb-14 grid grid-cols-3 gap-8">
               <div>
                 <p className="metric-value">~30%</p>
                 <p className="metric-label">cost reduction</p>
-                <p className="mt-1 font-mono text-2xs text-muted-foreground/60">amex infra</p>
+                <p className="mt-1.5 font-mono text-2xs text-muted-foreground/70">amex infra</p>
               </div>
               <div>
                 <p className="metric-value">~70%</p>
                 <p className="metric-label">alert reduction</p>
-                <p className="mt-1 font-mono text-2xs text-muted-foreground/60">via automation</p>
+                <p className="mt-1.5 font-mono text-2xs text-muted-foreground/70">via automation</p>
               </div>
               <div>
                 <p className="metric-value">AKS</p>
                 <p className="metric-label">prod deploys</p>
-                <p className="mt-1 font-mono text-2xs text-muted-foreground/60">helm + gitops</p>
+                <p className="mt-1.5 font-mono text-2xs text-muted-foreground/70">helm + gitops</p>
               </div>
             </div>
 
-            {/* Actions - primary CTA gets accent, rest are neutral */}
+            {/* Actions */}
             <div className="flex flex-wrap gap-3">
               <a
                 href={`mailto:${email}`}
-                className="inline-flex items-center gap-2 rounded border border-accent bg-accent/10 px-4 py-2.5 font-mono text-sm text-accent transition-all hover:bg-accent/20"
+                className="inline-flex items-center gap-2 rounded-md border border-accent bg-accent/10 px-5 py-2.5 font-mono text-sm text-accent transition-all hover:bg-accent/15"
               >
-                <span className="text-accent/60">$</span>
+                <span className="text-accent/70">$</span>
                 connect --email
               </a>
               {social.github && (
@@ -85,7 +85,7 @@ export function Hero() {
                   href={social.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded border border-border/60 px-4 py-2.5 font-mono text-sm text-muted-foreground transition-all hover:border-border hover:text-foreground"
+                  className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 font-mono text-sm text-muted-foreground transition-all hover:border-border-highlight hover:text-foreground"
                 >
                   view --github
                 </a>
@@ -95,7 +95,7 @@ export function Hero() {
                   href={social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded border border-border/60 px-4 py-2.5 font-mono text-sm text-muted-foreground transition-all hover:border-border hover:text-foreground"
+                  className="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 font-mono text-sm text-muted-foreground transition-all hover:border-border-highlight hover:text-foreground"
                 >
                   view --linkedin
                 </a>
@@ -103,21 +103,21 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right: Tech stack - softer containment */}
+          {/* Right: Tech stack */}
           <div className="relative">
-            <div className="rounded-lg bg-card/60 p-6">
-              {/* Header - minimal */}
-              <div className="mb-6 flex items-center justify-between pb-4">
+            <div className="rounded-lg bg-card p-6">
+              {/* Header */}
+              <div className="mb-6 flex items-center justify-between">
                 <span className="section-label">
                   tech.stack
                 </span>
-                <span className="font-mono text-xs text-muted-foreground/50">v2025.1</span>
+                <span className="font-mono text-xs text-muted-foreground/60">v2025.1</span>
               </div>
 
-              {/* Stack layers - neutral tags */}
+              {/* Stack layers */}
               <div className="space-y-5">
                 <div>
-                  <p className="mb-2 font-mono text-2xs text-muted-foreground/60">
+                  <p className="mb-2 font-mono text-2xs text-muted-foreground/70">
                     ┌─ application
                   </p>
                   <div className="ml-3 flex flex-wrap gap-1.5">
@@ -129,7 +129,7 @@ export function Hero() {
                 </div>
 
                 <div>
-                  <p className="mb-2 font-mono text-2xs text-muted-foreground/60">
+                  <p className="mb-2 font-mono text-2xs text-muted-foreground/70">
                     ├─ platform
                   </p>
                   <div className="ml-3 flex flex-wrap gap-1.5">
@@ -141,7 +141,7 @@ export function Hero() {
                 </div>
 
                 <div>
-                  <p className="mb-2 font-mono text-2xs text-muted-foreground/60">
+                  <p className="mb-2 font-mono text-2xs text-muted-foreground/70">
                     ├─ infrastructure
                   </p>
                   <div className="ml-3 flex flex-wrap gap-1.5">
@@ -153,7 +153,7 @@ export function Hero() {
                 </div>
 
                 <div>
-                  <p className="mb-2 font-mono text-2xs text-muted-foreground/60">
+                  <p className="mb-2 font-mono text-2xs text-muted-foreground/70">
                     ├─ delivery
                   </p>
                   <div className="ml-3 flex flex-wrap gap-1.5">
@@ -165,7 +165,7 @@ export function Hero() {
                 </div>
 
                 <div>
-                  <p className="mb-2 font-mono text-2xs text-muted-foreground/60">
+                  <p className="mb-2 font-mono text-2xs text-muted-foreground/70">
                     └─ observability
                   </p>
                   <div className="ml-3 flex flex-wrap gap-1.5">
@@ -177,8 +177,8 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* Footer - very subtle */}
-              <div className="mt-6 flex items-center justify-between border-t border-border/30 pt-4 font-mono text-xs text-muted-foreground/50">
+              {/* Footer */}
+              <div className="mt-6 flex items-center justify-between border-t border-border/50 pt-4 font-mono text-xs text-muted-foreground/60">
                 <span>5 layers</span>
                 <span>20+ tools</span>
               </div>
@@ -186,11 +186,11 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Scroll indicator - subtle */}
-        <div className="mt-20 flex justify-center">
+        {/* Scroll indicator */}
+        <div className="mt-24 flex justify-center">
           <a
             href="#experience"
-            className="flex flex-col items-center gap-2 font-mono text-xs text-muted-foreground/50 transition-colors hover:text-muted-foreground"
+            className="flex flex-col items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
           >
             <span>scroll</span>
             <Icon name="arrow-right" size={12} className="rotate-90" />

@@ -2,14 +2,14 @@ import { education, certifications } from '@/data'
 
 export function Education() {
   return (
-    <section id="education" className="relative py-20">
+    <section id="education" className="relative py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-12 flex items-center gap-4">
           <h2 className="section-label">
             credentials.log
           </h2>
-          <div className="h-px flex-1 bg-border/40" />
+          <div className="h-px flex-1 bg-border/50" />
         </div>
 
         <div className="grid gap-12 lg:grid-cols-2">
@@ -24,7 +24,7 @@ export function Education() {
               {education.map((edu, index) => (
                 <div
                   key={edu.id}
-                  className={`rounded bg-card/40 p-4 ${index === 0 ? 'border-l-2 border-accent/50' : ''}`}
+                  className={`rounded bg-card p-4 ${index === 0 ? 'border-l-2 border-accent/60' : ''}`}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
@@ -60,7 +60,7 @@ export function Education() {
               {certifications.map((cert) => (
                 <div
                   key={cert.id}
-                  className="rounded border-l-2 border-accent/50 bg-accent/5 p-4"
+                  className="rounded border-l-2 border-accent/60 bg-accent/5 p-4"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
@@ -78,7 +78,7 @@ export function Education() {
             </div>
 
             {/* Badge */}
-            <div className="mt-6 flex items-center gap-3 rounded bg-card/40 p-4">
+            <div className="mt-6 flex items-center gap-3 rounded bg-card p-4">
               <div className="flex h-10 w-10 items-center justify-center rounded bg-[#0078d4]/20 font-mono text-sm font-semibold text-[#0078d4]">
                 MS
               </div>

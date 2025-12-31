@@ -5,14 +5,14 @@ export function Contact() {
   const { email, resumeUrl, social } = siteConfig
 
   return (
-    <section id="contact" className="relative bg-section-alt py-24">
+    <section id="contact" className="relative bg-section-alt py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-12 flex items-center gap-4">
           <h2 className="section-label">
             connect.interface
           </h2>
-          <div className="h-px flex-1 bg-border/40" />
+          <div className="h-px flex-1 bg-border/50" />
         </div>
 
         <div className="grid gap-16 lg:grid-cols-2">
@@ -27,7 +27,7 @@ export function Contact() {
             </p>
 
             {/* Terminal */}
-            <div className="rounded-lg bg-card/60 font-mono text-sm">
+            <div className="rounded-lg bg-card font-mono text-sm">
               {/* Header */}
               <div className="flex items-center gap-2 border-b border-border/30 px-4 py-2.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/20" />

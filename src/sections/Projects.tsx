@@ -3,14 +3,14 @@ import { Icon } from '@/components/ui'
 
 export function Projects() {
   return (
-    <section id="projects" className="relative py-24">
+    <section id="projects" className="relative py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-16 flex items-center gap-4">
           <h2 className="section-label">
             architecture.registry
           </h2>
-          <div className="h-px flex-1 bg-border/40" />
+          <div className="h-px flex-1 bg-border/50" />
           <span className="font-mono text-xs text-muted-foreground/50">
             {projects.length} systems
           </span>
@@ -21,7 +21,7 @@ export function Projects() {
           {projects.map((project, index) => (
             <article
               key={project.id}
-              className="group rounded-lg bg-card/40 transition-colors hover:bg-card/60"
+              className="group rounded-lg bg-card transition-colors hover:bg-card/80"
             >
               {/* Header bar */}
               <div className="flex items-center justify-between border-b border-border/30 px-6 py-4">

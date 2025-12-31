@@ -40,14 +40,14 @@ const systemLayers = [
 
 export function Skills() {
   return (
-    <section id="skills" className="relative bg-section-alt py-24">
+    <section id="skills" className="relative bg-section-alt py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-16 flex items-center gap-4">
           <h2 className="section-label">
             system.map
           </h2>
-          <div className="h-px flex-1 bg-border/40" />
+          <div className="h-px flex-1 bg-border/50" />
           <span className="font-mono text-xs text-muted-foreground/50">
             {systemLayers.length} layers
           </span>
@@ -88,7 +88,7 @@ export function Skills() {
         </div>
 
         {/* Stats - understated */}
-        <div className="mt-16 grid grid-cols-3 gap-4 border-t border-border/30 pt-8 text-center">
+        <div className="mt-16 grid grid-cols-3 gap-4 border-t border-border/50 pt-8 text-center">
           <div>
             <p className="metric-value">
               {systemLayers.reduce((acc, l) => acc + l.items.length, 0)}+
