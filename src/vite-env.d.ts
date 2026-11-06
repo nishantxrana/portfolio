@@ -18,11 +18,8 @@ interface ImportMetaEnv {
   readonly VITE_SHOW_SKILLS: string
   readonly VITE_SHOW_EDUCATION: string
   readonly VITE_SHOW_CERTIFICATIONS: string
-  readonly VITE_CLARITY_ID: string
-  readonly VITE_GA_ID: string
 }
 
 interface ImportMeta {
   readonly env: ImportMetaEnv
 }
-

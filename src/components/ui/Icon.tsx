@@ -29,8 +29,7 @@ const icons: Record<IconName, string> = {
     'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z',
   email:
     'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
-  download:
-    'M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3',
+  download: 'M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3',
   external:
     'M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3',
   'arrow-right': 'M5 12h14M12 5l7 7-7 7',
@@ -42,11 +41,21 @@ const icons: Record<IconName, string> = {
     'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0zM12 13a3 3 0 100-6 3 3 0 000 6z',
   check: 'M20 6L9 17l-5-5',
   code: 'M16 18l6-6-6-6M8 6l-6 6 6 6',
-  terminal:
-    'M4 17l6-6-6-6M12 19h8',
+  terminal: 'M4 17l6-6-6-6M12 19h8',
 }
 
-const strokeIcons = ['email', 'download', 'external', 'arrow-right', 'briefcase', 'calendar', 'map-pin', 'check', 'code', 'terminal']
+const strokeIcons = [
+  'email',
+  'download',
+  'external',
+  'arrow-right',
+  'briefcase',
+  'calendar',
+  'map-pin',
+  'check',
+  'code',
+  'terminal',
+]
 
 export function Icon({ name, size = 20, className = '', ...props }: IconProps) {
   const isStroke = strokeIcons.includes(name)
@@ -69,4 +78,3 @@ export function Icon({ name, size = 20, className = '', ...props }: IconProps) {
     </svg>
   )
 }
-

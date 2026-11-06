@@ -1,5 +1,23 @@
 import { experiences } from '@/data'
 
+function renderHighlight(text: string, metric?: string) {
+  if (!metric) return text
+
+  const index = text.indexOf(metric)
+  if (index === -1) return text
+
+  const before = text.slice(0, index)
+  const after = text.slice(index + metric.length)
+
+  return (
+    <>
+      {before}
+      <span className="font-mono text-accent">{metric}</span>
+      {after}
+    </>
+  )
+}
+
 export function Experience() {
   return (
     <section id="experience" className="relative py-20">
@@ -11,7 +29,8 @@ export function Experience() {
           </h2>
           <div className="h-px flex-1 bg-border" />
           <span className="font-mono text-xs text-accent">
-            {experiences.length} {experiences.length === 1 ? 'entry' : 'entries'}
+            {experiences.length}{' '}
+            {experiences.length === 1 ? 'entry' : 'entries'}
           </span>
         </div>
 
@@ -67,33 +86,17 @@ export function Experience() {
                       system.improvements
                     </p>
                     <div className="space-y-3">
-                      {exp.highlights.map((highlight, i) => {
-                        // Extract metrics if present
-                        const metricMatch = highlight.match(/(\d+%?|\~\d+%)/g)
-                        const hasMetric = metricMatch && metricMatch.length > 0
-
-                        return (
-                          <div
-                            key={i}
-                            className="group relative flex gap-3 text-sm"
-                          >
-                            <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent/50 group-hover:bg-accent" />
-                            <p className="text-muted-foreground">
-                              {hasMetric ? (
-                                <>
-                                  {highlight.split(metricMatch[0]!)[0]}
-                                  <span className="font-mono text-accent">
-                                    {metricMatch[0]}
-                                  </span>
-                                  {highlight.split(metricMatch[0]!).slice(1).join(metricMatch[0]!)}
-                                </>
-                              ) : (
-                                highlight
-                              )}
-                            </p>
-                          </div>
-                        )
-                      })}
+                      {exp.highlights.map((highlight, i) => (
+                        <div
+                          key={i}
+                          className="group relative flex gap-3 text-sm"
+                        >
+                          <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent/50 group-hover:bg-accent" />
+                          <p className="text-muted-foreground">
+                            {renderHighlight(highlight.text, highlight.metric)}
+                          </p>
+                        </div>
+                      ))}
                     </div>
                   </div>
 

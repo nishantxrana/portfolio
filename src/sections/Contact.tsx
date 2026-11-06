@@ -86,6 +86,20 @@ export function Contact() {
                     </>
                   )}
 
+                  <p>
+                    <span className="text-accent">$</span> echo $WEBSITE
+                  </p>
+                  <p className="pl-4">
+                    <a
+                      href="https://nishantxrana.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-cyan hover:underline"
+                    >
+                      nishantxrana.com
+                    </a>
+                  </p>
+
                   <p className="mt-4 text-muted-foreground/60">
                     # status: <span className="text-accent">available</span>
                   </p>

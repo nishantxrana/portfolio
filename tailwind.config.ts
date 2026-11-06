@@ -25,7 +25,7 @@ export default {
         mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
       },
       fontSize: {
-        '2xs': ['0.625rem', { lineHeight: '1rem' }],
+        '2xs': ['0.6875rem', { lineHeight: '1rem' }],
       },
       spacing: {
         '18': '4.5rem',

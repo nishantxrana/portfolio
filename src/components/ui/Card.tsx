@@ -22,7 +22,10 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
 
 Card.displayName = 'Card'
 
-export function CardHeader({ className = '', ...props }: ComponentProps<'div'>) {
+export function CardHeader({
+  className = '',
+  ...props
+}: ComponentProps<'div'>) {
   return <div className={`mb-4 ${className}`} {...props} />
 }
 
@@ -44,7 +47,9 @@ export function CardDescription({
   )
 }
 
-export function CardContent({ className = '', ...props }: ComponentProps<'div'>) {
+export function CardContent({
+  className = '',
+  ...props
+}: ComponentProps<'div'>) {
   return <div className={className} {...props} />
 }
-

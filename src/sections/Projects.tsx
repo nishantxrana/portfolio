@@ -27,11 +27,20 @@ export function Projects() {
               <div className="flex items-center justify-between border-b border-border px-6 py-3">
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-xs text-accent">
-                    #{String(index).padStart(2, '0')}
+                    #{String(index + 1).padStart(2, '0')}
                   </span>
                   <span className="text-border">│</span>
                   <span className="font-mono text-xs text-muted-foreground">
                     {project.id}
+                  </span>
+                  <span
+                    className={`rounded border px-2 py-0.5 font-mono text-2xs ${
+                      project.status === 'open-source'
+                        ? 'border-accent/40 bg-accent/10 text-accent'
+                        : 'border-border bg-muted/40 text-muted-foreground'
+                    }`}
+                  >
+                    {project.status}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -115,26 +124,16 @@ export function Projects() {
                     </div>
 
                     {/* Project stats */}
-                    <div className="mt-4 border-t border-border pt-4">
-                      <div className="grid grid-cols-2 gap-2 text-center">
-                        <div>
-                          <p className="font-mono text-lg text-foreground">
-                            {project.techStack.length}
-                          </p>
-                          <p className="font-mono text-2xs text-muted-foreground">
-                            technologies
-                          </p>
-                        </div>
-                        <div>
-                          <p className="font-mono text-lg text-foreground">
-                            {project.highlights.length}
-                          </p>
-                          <p className="font-mono text-2xs text-muted-foreground">
-                            features
-                          </p>
-                        </div>
+                    {project.stat && (
+                      <div className="mt-4 border-t border-border pt-4 text-center">
+                        <p className="font-mono text-lg text-foreground">
+                          {project.stat.value}
+                        </p>
+                        <p className="font-mono text-2xs text-muted-foreground">
+                          {project.stat.label}
+                        </p>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>

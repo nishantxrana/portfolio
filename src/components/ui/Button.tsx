@@ -10,10 +10,8 @@ interface ButtonProps extends ComponentProps<'button'> {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary:
-    'bg-accent text-accent-foreground hover:bg-accent/90 shadow-sm',
-  secondary:
-    'bg-muted text-foreground hover:bg-muted/80',
+  primary: 'bg-accent text-accent-foreground hover:bg-accent/90 shadow-sm',
+  secondary: 'bg-muted text-foreground hover:bg-muted/80',
   ghost: 'hover:bg-muted/50 text-foreground',
   outline:
     'border border-border bg-transparent hover:bg-muted/50 text-foreground',
@@ -64,4 +62,3 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 )
 
 ButtonLink.displayName = 'ButtonLink'
-

@@ -1,46 +1,90 @@
 // ==========================================
 // Skills Data
-// Source: RESUME.md
+// Source: Resume (single source of truth)
 // ==========================================
 
 import type { SkillCategory } from '@/types'
 
 export const skillCategories: SkillCategory[] = [
   {
-    id: 'languages',
-    name: 'Languages & Frameworks',
-    skills: ['JavaScript', 'Python', 'React.js', 'Node.js'],
-  },
-  {
-    id: 'cloud-devops',
-    name: 'Cloud & DevOps',
+    id: 'cloud',
+    name: 'Cloud',
+    description: 'Microsoft Azure services',
+    accent: 'accent',
     skills: [
       'Microsoft Azure',
-      'Azure DevOps',
-      'Docker',
-      'Kubernetes (AKS)',
+      'AKS',
+      'App Service',
+      'Function Apps',
+      'Virtual Machines',
+      'VNets',
+      'NSG',
+      'Load Balancers',
+      'Application Gateway',
+      'Azure Key Vault',
+      'Azure SQL',
+      'Storage Accounts',
+    ],
+  },
+  {
+    id: 'iac-containers',
+    name: 'IaC & Containers',
+    description: 'Infrastructure and orchestration',
+    accent: 'cyan',
+    skills: [
       'Terraform',
-      'Jenkins',
+      'Infrastructure as Code (IaC)',
+      'Docker',
+      'Kubernetes',
+      'Helm',
+    ],
+  },
+  {
+    id: 'cicd-tooling',
+    name: 'CI/CD & Tooling',
+    description: 'Pipelines and delivery',
+    accent: 'amber',
+    skills: [
+      'CI/CD',
+      'Azure DevOps (YAML pipelines, Repos, Artifacts)',
+      'Azure Pipelines',
       'GitHub Actions',
       'GitLab CI/CD',
+      'Jenkins',
+      'Git',
+      'MSBuild',
+      'Jira',
     ],
   },
   {
-    id: 'azure-services',
-    name: 'Azure Services',
+    id: 'monitoring-scripting',
+    name: 'Monitoring & Scripting',
+    description: 'Observability and automation',
+    accent: 'accent',
     skills: [
-      'Azure App Service',
-      'Azure Function Apps',
-      'Azure Storage Accounts',
-      'Azure SQL Database',
-      'Azure Logic Apps',
-      'Azure Application Gateway',
+      'Azure Monitor',
+      'Application Insights',
+      'Prometheus',
+      'Grafana',
+      'Bash',
+      'PowerShell',
+      'Python',
     ],
   },
   {
-    id: 'monitoring',
-    name: 'Monitoring & Observability',
-    skills: ['Azure Monitor', 'Application Insights', 'Prometheus', 'Grafana'],
+    id: 'ai-web',
+    name: 'AI & Web',
+    description: 'AI platforms and application stack',
+    accent: 'cyan',
+    skills: [
+      'Azure OpenAI',
+      'Azure AI Foundry',
+      'RAG',
+      'vector embeddings',
+      '.NET',
+      'Node.js',
+      'React.js',
+      'REST APIs',
+    ],
   },
 ]
-

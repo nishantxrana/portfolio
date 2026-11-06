@@ -14,6 +14,7 @@ export const siteConfig: SiteConfig = {
   phone: env.phone,
   location: env.location,
   resumeUrl: env.resumeUrl,
+  lastUpdated: 'Nov 2026',
   social: {
     github: env.githubUrl,
     linkedin: env.linkedinUrl,
@@ -27,7 +28,3 @@ export const siteConfig: SiteConfig = {
     certifications: env.showCertifications,
   },
 }
-
-// Kept for reference but not used in new design
-// The hero section uses inline technical copy instead
-export const professionalSummary = `Software Engineer specializing in production systems, DevOps automation, and cloud infrastructure. Building CI/CD pipelines, Kubernetes deployments, and infrastructure-as-code solutions. Focused on reliability, observability, and cost optimization.`

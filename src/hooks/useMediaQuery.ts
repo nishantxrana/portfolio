@@ -25,6 +25,6 @@ export function useMediaQuery(query: string): boolean {
 
 // Convenience hooks for common breakpoints
 export const useIsMobile = () => useMediaQuery('(max-width: 639px)')
-export const useIsTablet = () => useMediaQuery('(min-width: 640px) and (max-width: 1023px)')
+export const useIsTablet = () =>
+  useMediaQuery('(min-width: 640px) and (max-width: 1023px)')
 export const useIsDesktop = () => useMediaQuery('(min-width: 1024px)')
-

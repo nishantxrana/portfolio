@@ -20,22 +20,28 @@ export const env = {
   // Personal Information
   name: getEnvVar('VITE_NAME', 'Nishant Rana'),
   title: getEnvVar('VITE_TITLE', 'Software Engineer'),
-  subtitle: getEnvVar('VITE_SUBTITLE', 'DevOps & Cloud-Focused Full Stack Developer'),
+  subtitle: getEnvVar(
+    'VITE_SUBTITLE',
+    'DevOps & Cloud Engineer · Microsoft Azure'
+  ),
   email: getEnvVar('VITE_EMAIL', 'nishantxrana@gmail.com'),
   phone: getEnvVar('VITE_PHONE', '+91 8968755216'),
-  location: getEnvVar('VITE_LOCATION', 'India'),
+  location: getEnvVar('VITE_LOCATION', 'Haryana, India'),
 
   // Social Links
   githubUrl: getEnvVar('VITE_GITHUB_URL', 'https://github.com/nishantxrana'),
-  linkedinUrl: getEnvVar('VITE_LINKEDIN_URL', 'https://linkedin.com/in/nishantxrana'),
+  linkedinUrl: getEnvVar(
+    'VITE_LINKEDIN_URL',
+    'https://linkedin.com/in/nishantxrana'
+  ),
   twitterUrl: getEnvVar('VITE_TWITTER_URL', ''),
 
   // Resume
   resumeUrl: getEnvVar('VITE_RESUME_URL', ''),
 
   // Site Metadata
-  siteUrl: getEnvVar('VITE_SITE_URL', ''),
-  ogImage: getEnvVar('VITE_OG_IMAGE', '/og-image.png'),
+  siteUrl: getEnvVar('VITE_SITE_URL', 'https://nishantxrana.com'),
+  ogImage: getEnvVar('VITE_OG_IMAGE', 'https://nishantxrana.com/og-image.png'),
 
   // Section Visibility
   showExperience: getEnvBool('VITE_SHOW_EXPERIENCE', true),
@@ -43,11 +49,6 @@ export const env = {
   showSkills: getEnvBool('VITE_SHOW_SKILLS', true),
   showEducation: getEnvBool('VITE_SHOW_EDUCATION', true),
   showCertifications: getEnvBool('VITE_SHOW_CERTIFICATIONS', true),
-
-  // Analytics
-  clarityId: getEnvVar('VITE_CLARITY_ID', ''),
-  gaId: getEnvVar('VITE_GA_ID', ''),
 } as const
 
 export type Env = typeof env
-

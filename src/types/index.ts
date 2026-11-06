@@ -9,7 +9,7 @@ export interface Experience {
   location: string
   period: string
   current: boolean
-  highlights: string[]
+  highlights: { text: string; metric?: string }[]
   technologies: string[]
 }
 
@@ -19,6 +19,11 @@ export interface Project {
   description: string
   techStack: string[]
   highlights: string[]
+  status: 'internal' | 'open-source'
+  stat?: {
+    value: string
+    label: string
+  }
   links?: {
     github?: string
     live?: string
@@ -29,6 +34,8 @@ export interface SkillCategory {
   id: string
   name: string
   skills: string[]
+  accent: 'accent' | 'cyan' | 'amber'
+  description: string
 }
 
 export interface Education {
@@ -61,6 +68,7 @@ export interface SiteConfig {
   phone: string
   location: string
   resumeUrl: string
+  lastUpdated: string
   social: {
     github: string
     linkedin: string
@@ -74,4 +82,3 @@ export interface SiteConfig {
     certifications: boolean
   }
 }
-
