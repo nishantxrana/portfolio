@@ -1,0 +1,34 @@
+---
+description: Keep Accept text/markdown agent serving in sync when portfolio meta, schema, or build contract changes
+globs: index.html,vercel.json,package.json,src/content/**,src/data/**,src/config/**,scripts/generate-agent-markdown.ts
+alwaysApply: false
+---
+
+# Agent Markdown Negotiation
+
+This site serves markdown to agents via `Accept: text/markdown` (Vercel routes → `dist/index.md`). Most bullet/text edits in `src/data/*` regenerate automatically on build. Guard the contract below when making structural or meta changes.
+
+## When you must update agent markdown
+
+1. **Page meta** — If title, description, or OG image change in `index.html` (or env defaults), update matching values in `src/content/portfolio-markdown.ts` (`PAGE_TITLE`, `PAGE_DESCRIPTION`, and/or `env.ogImage` usage).
+2. **Schema / sections** — If you add, remove, or reshape fields on Experience, Project, skills, education, or certifications, update `buildPortfolioMarkdown()` so the new shape is rendered (or intentionally omitted).
+3. **Build / routing** — Do not remove `generate:markdown` from the `build` script, or break the `Accept: text/markdown` route / `x-markdown-tokens` headers in `vercel.json`.
+
+## When you do not need extra work
+
+- Editing highlight text, project copy, skills lists, or contact fields in `src/data/*` / `src/config/*` — `npm run build` regenerates `dist/index.md`.
+
+## Verify after contract changes
+
+```bash
+npm run generate:markdown
+# or: npm run build
+# sanity-check dist/index.md frontmatter + new sections
+```
+
+## Key files
+
+- Generator: `src/content/portfolio-markdown.ts`
+- Build hook: `scripts/generate-agent-markdown.ts` → `dist/index.md`
+- Negotiation: `vercel.json` (`Accept: text/markdown` on `/`)
+- Discovery: `index.html` `link[rel=alternate][type=text/markdown]`
