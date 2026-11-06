@@ -5,7 +5,10 @@
 
 const getEnvVar = (key: string, fallback: string = ''): string => {
   const value = import.meta.env[key]
-  return typeof value === 'string' ? value : fallback
+  if (typeof value === 'string' && value.trim() !== '') {
+    return value
+  }
+  return fallback
 }
 
 const getEnvBool = (key: string, fallback: boolean = true): boolean => {
