@@ -1,4 +1,5 @@
 import { Header, Footer } from '@/components/layout'
+import { SkipLink } from '@/components/ui'
 import {
   Hero,
   Experience,
@@ -18,9 +19,10 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background to-background" />
       </div>
 
+      <SkipLink />
       <Header />
 
-      <main>
+      <main id="main">
         <Hero />
 
         {/* Section divider */}

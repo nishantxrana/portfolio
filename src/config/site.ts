@@ -14,7 +14,9 @@ export const siteConfig: SiteConfig = {
   phone: env.phone,
   location: env.location,
   resumeUrl: env.resumeUrl,
+  siteUrl: env.siteUrl,
   lastUpdated: 'Nov 2026',
+  availability: env.availability || undefined,
   social: {
     github: env.githubUrl,
     linkedin: env.linkedinUrl,

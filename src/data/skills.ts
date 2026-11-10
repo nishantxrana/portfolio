@@ -80,7 +80,7 @@ export const skillCategories: SkillCategory[] = [
       'Azure OpenAI',
       'Azure AI Foundry',
       'RAG',
-      'vector embeddings',
+      'Vector Embeddings',
       '.NET',
       'Node.js',
       'React.js',

@@ -22,9 +22,8 @@ export function Experience() {
   return (
     <section id="experience" className="relative py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <div className="mb-12 flex items-center gap-4">
-          <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
+          <h2 className="font-mono text-sm font-medium uppercase tracking-wider text-foreground">
             deployment.log
           </h2>
           <div className="h-px flex-1 bg-border" />
@@ -34,18 +33,14 @@ export function Experience() {
           </span>
         </div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Vertical line */}
           <div className="absolute left-0 top-0 hidden h-full w-px bg-border md:left-32 md:block" />
 
           {experiences.map((exp, index) => (
             <article key={exp.id} className="relative mb-16 last:mb-0">
-              {/* Timeline dot */}
               <div className="absolute left-0 top-0 hidden h-3 w-3 -translate-x-1/2 rounded-full border-2 border-accent bg-background md:left-32 md:block" />
 
               <div className="grid gap-6 md:grid-cols-[120px,1fr] md:gap-12">
-                {/* Timestamp */}
                 <div className="flex items-start gap-3 md:flex-col md:items-end md:gap-1">
                   <span className="font-mono text-xs text-accent">
                     {exp.current ? 'CURRENT' : `#${index}`}
@@ -61,9 +56,7 @@ export function Experience() {
                   )}
                 </div>
 
-                {/* Content */}
-                <div className="rounded-lg border border-border bg-card/30 p-6">
-                  {/* Header */}
+                <div className="rounded-lg border border-border bg-card/50 p-6">
                   <div className="mb-6 border-b border-border pb-4">
                     <div className="flex flex-wrap items-start justify-between gap-4">
                       <div>
@@ -80,7 +73,6 @@ export function Experience() {
                     </div>
                   </div>
 
-                  {/* Highlights as system improvements */}
                   <div className="mb-6 space-y-4">
                     <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                       system.improvements
@@ -92,15 +84,24 @@ export function Experience() {
                           className="group relative flex gap-3 text-sm"
                         >
                           <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent/50 group-hover:bg-accent" />
-                          <p className="text-muted-foreground">
-                            {renderHighlight(highlight.text, highlight.metric)}
-                          </p>
+                          <div className="min-w-0 flex-1">
+                            {highlight.badge && (
+                              <span className="mb-1.5 inline-flex rounded border border-accent/40 bg-accent/10 px-1.5 py-0.5 font-mono text-2xs uppercase tracking-wider text-accent">
+                                {highlight.badge}
+                              </span>
+                            )}
+                            <p className="text-muted-foreground">
+                              {renderHighlight(
+                                highlight.text,
+                                highlight.metric
+                              )}
+                            </p>
+                          </div>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  {/* Tech stack */}
                   <div>
                     <p className="mb-3 font-mono text-xs uppercase tracking-wider text-muted-foreground">
                       stack.used
@@ -117,15 +118,6 @@ export function Experience() {
               </div>
             </article>
           ))}
-        </div>
-
-        {/* Timeline end marker */}
-        <div className="mt-8 flex items-center gap-4">
-          <div className="h-px flex-1 bg-border" />
-          <span className="font-mono text-xs text-muted-foreground">
-            // more to come
-          </span>
-          <div className="h-px flex-1 bg-border" />
         </div>
       </div>
     </section>

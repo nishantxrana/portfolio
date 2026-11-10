@@ -1,4 +1,5 @@
-import { skillCategories } from '@/data'
+import { certifications, skillCategories } from '@/data'
+import { siteConfig } from '@/config'
 
 const accentClasses = {
   cyan: {
@@ -23,13 +24,15 @@ export function Skills() {
     (acc, category) => acc + category.skills.length,
     0
   )
+  const certCount = siteConfig.sections.certifications
+    ? certifications.length
+    : 0
 
   return (
     <section id="skills" className="relative py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <div className="mb-12 flex items-center gap-4">
-          <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
+          <h2 className="font-mono text-sm font-medium uppercase tracking-wider text-foreground">
             system.map
           </h2>
           <div className="h-px flex-1 bg-border" />
@@ -38,9 +41,7 @@ export function Skills() {
           </span>
         </div>
 
-        {/* System architecture visualization */}
         <div className="relative">
-          {/* Connection lines - visual only */}
           <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 border-l border-dashed border-border lg:block" />
 
           <div className="space-y-6">
@@ -52,7 +53,6 @@ export function Skills() {
                   key={layer.id}
                   className="relative grid gap-4 lg:grid-cols-[1fr,auto,1fr] lg:gap-8"
                 >
-                  {/* Layer info - alternating sides */}
                   <div
                     className={`flex flex-col justify-center ${
                       index % 2 === 0
@@ -74,7 +74,6 @@ export function Skills() {
                     </p>
                   </div>
 
-                  {/* Center node */}
                   <div className="relative hidden lg:flex lg:items-center lg:justify-center">
                     <div
                       className={`flex h-10 w-10 items-center justify-center rounded-full border-2 bg-background font-mono text-xs ${colors.node}`}
@@ -83,10 +82,9 @@ export function Skills() {
                     </div>
                   </div>
 
-                  {/* Skills grid */}
                   <div className={index % 2 === 0 ? 'lg:order-3' : ''}>
                     <div
-                      className={`rounded-lg border border-border bg-card/30 p-4 ${
+                      className={`rounded-lg border border-border bg-card/50 p-4 ${
                         index % 2 === 0 ? '' : 'lg:text-right'
                       }`}
                     >
@@ -112,7 +110,6 @@ export function Skills() {
           </div>
         </div>
 
-        {/* Stats footer */}
         <div className="mt-12 grid grid-cols-3 gap-4 border-t border-border pt-8 text-center">
           <div>
             <p className="font-mono text-2xl text-foreground">{techCount}</p>
@@ -129,7 +126,7 @@ export function Skills() {
             </p>
           </div>
           <div>
-            <p className="font-mono text-2xl text-accent">2</p>
+            <p className="font-mono text-2xl text-accent">{certCount}</p>
             <p className="font-mono text-xs text-muted-foreground">
               certifications
             </p>

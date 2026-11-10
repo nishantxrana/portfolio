@@ -12,17 +12,17 @@
     --background: 220 20% 4%;
     --foreground: 210 20% 92%;
 
-    /* Muted - Subdued grays */
+    /* Muted - Subdued grays (bumped for readable captions) */
     --muted: 220 15% 12%;
-    --muted-foreground: 220 10% 55%;
+    --muted-foreground: 220 10% 62%;
 
     /* Card surfaces */
     --card: 220 18% 7%;
     --card-foreground: 210 20% 92%;
 
     /* Borders - Subtle definition */
-    --border: 220 15% 16%;
-    --border-highlight: 220 15% 22%;
+    --border: 220 15% 18%;
+    --border-highlight: 220 15% 24%;
 
     /* Terminal green - Primary accent */
     --accent: 142 70% 45%;
@@ -79,7 +79,7 @@
   }
 
   :focus-visible {
-    @apply outline-none ring-1 ring-accent ring-offset-1 ring-offset-background;
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
   }
 }
 
@@ -203,6 +203,35 @@
     to {
       opacity: 1;
     }
+  }
+}
+
+/* ==========================================
+   Reduced motion
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .status-dot::before {
+    animation: none;
+    opacity: 0;
+  }
+
+  .scroll-cue {
+    transition: none !important;
+  }
+
+  .group:hover .scroll-cue {
+    transform: none !important;
+  }
+
+  .animate-in,
+  .animate-fade,
+  .cursor-blink::after {
+    animation: none !important;
   }
 }
 

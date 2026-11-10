@@ -2,45 +2,50 @@ import { siteConfig } from '@/config'
 import { Icon } from '@/components/ui'
 
 export function Contact() {
-  const { email, resumeUrl, social } = siteConfig
+  const { email, resumeUrl, social, siteUrl, availability } = siteConfig
+  const websiteHost = siteUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')
 
   return (
     <section id="contact" className="relative py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <div className="mb-12 flex items-center gap-4">
-          <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
+          <h2 className="font-mono text-sm font-medium uppercase tracking-wider text-foreground">
             connect.interface
           </h2>
           <div className="h-px flex-1 bg-border" />
         </div>
 
         <div className="grid gap-12 lg:grid-cols-2">
-          {/* Left: Message */}
           <div>
             <h3 className="mb-4 text-2xl font-medium text-foreground">
-              Let's build something together
+              Let&apos;s talk about your platform
             </h3>
             <p className="mb-8 text-muted-foreground">
               Open to discussing production systems, DevOps challenges, cloud
-              architecture, or new opportunities. My inbox is always open.
+              architecture, or new opportunities.
             </p>
 
-            {/* Terminal-style contact */}
             <div className="rounded-lg border border-border bg-card/50 font-mono text-sm">
-              {/* Terminal header */}
               <div className="flex items-center gap-2 border-b border-border px-4 py-2">
-                <span className="h-3 w-3 rounded-full bg-red/50" />
-                <span className="h-3 w-3 rounded-full bg-amber/50" />
-                <span className="h-3 w-3 rounded-full bg-accent/50" />
+                <span
+                  className="h-3 w-3 rounded-full bg-red/50"
+                  aria-hidden="true"
+                />
+                <span
+                  className="h-3 w-3 rounded-full bg-amber/50"
+                  aria-hidden="true"
+                />
+                <span
+                  className="h-3 w-3 rounded-full bg-accent/50"
+                  aria-hidden="true"
+                />
                 <span className="ml-2 text-xs text-muted-foreground">
                   connect.sh
                 </span>
               </div>
 
-              {/* Terminal content */}
               <div className="p-4 text-muted-foreground">
-                <p className="mb-3 text-muted-foreground/60">
+                <p className="mb-3 text-muted-foreground/80">
                   # available connection methods
                 </p>
 
@@ -91,27 +96,28 @@ export function Contact() {
                   </p>
                   <p className="pl-4">
                     <a
-                      href="https://nishantxrana.com"
+                      href={siteUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-cyan hover:underline"
                     >
-                      nishantxrana.com
+                      {websiteHost}
                     </a>
                   </p>
 
-                  <p className="mt-4 text-muted-foreground/60">
-                    # status: <span className="text-accent">available</span>
-                  </p>
+                  {availability && (
+                    <p className="mt-4 text-muted-foreground/80">
+                      # status:{' '}
+                      <span className="text-accent">{availability}</span>
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right: Quick actions */}
           <div className="flex flex-col justify-center">
             <div className="space-y-4">
-              {/* Primary CTA */}
               <a
                 href={`mailto:${email}`}
                 className="group flex items-center justify-between rounded-lg border border-accent bg-accent/10 p-4 transition-colors hover:bg-accent/20"
@@ -128,11 +134,10 @@ export function Contact() {
                 <Icon
                   name="arrow-right"
                   size={16}
-                  className="text-accent transition-transform group-hover:translate-x-1"
+                  className="scroll-cue text-accent transition-transform group-hover:translate-x-1"
                 />
               </a>
 
-              {/* Resume download */}
               {resumeUrl && (
                 <a
                   href={resumeUrl}
@@ -151,25 +156,25 @@ export function Contact() {
                         Download Resume
                       </p>
                       <p className="font-mono text-xs text-muted-foreground">
-                        PDF format
+                        Open share link
                       </p>
                     </div>
                   </div>
                   <Icon
                     name="external"
                     size={16}
-                    className="text-muted-foreground transition-transform group-hover:translate-x-1"
+                    className="scroll-cue text-muted-foreground transition-transform group-hover:translate-x-1"
                   />
                 </a>
               )}
 
-              {/* Social links */}
               <div className="flex gap-3 pt-4">
                 {social.github && (
                   <a
                     href={social.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="GitHub"
                     className="flex h-12 w-12 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-accent/50 hover:text-foreground"
                   >
                     <Icon name="github" size={20} />
@@ -180,6 +185,7 @@ export function Contact() {
                     href={social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="LinkedIn"
                     className="flex h-12 w-12 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-accent/50 hover:text-foreground"
                   >
                     <Icon name="linkedin" size={20} />
@@ -190,6 +196,7 @@ export function Contact() {
                     href={social.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Twitter"
                     className="flex h-12 w-12 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-accent/50 hover:text-foreground"
                   >
                     <Icon name="twitter" size={20} />

@@ -35,36 +35,33 @@ function treeGlyph(index: number, total: number) {
 }
 
 export function Hero() {
-  const { name, title, subtitle, email, social, lastUpdated } = siteConfig
+  const { name, title, subtitle, email, social, resumeUrl, lastUpdated } =
+    siteConfig
   const toolCount = techLayers.reduce(
     (acc, layer) => acc + layer.tools.length,
     0
   )
 
   return (
-    <section className="relative min-h-screen pt-20">
+    <section className="relative pt-20">
       {/* Grid background */}
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-50" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         {/* System header */}
-        <div className="mb-12 flex items-center gap-3 font-mono text-xs text-muted-foreground">
+        <div className="mb-10 flex flex-wrap items-center gap-3 font-mono text-xs text-muted-foreground">
           <span className="text-accent">▲</span>
-          <span>system status</span>
-          <span className="text-border">│</span>
-          <span className="flex items-center gap-2">
-            <span className="status-dot" />
-            <span className="text-accent">operational</span>
+          <span>portfolio</span>
+          <span className="text-border" aria-hidden="true">
+            │
           </span>
-          <span className="text-border">│</span>
           <span>last updated: {lastUpdated}</span>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-[1fr,400px] lg:gap-16">
           {/* Left: Identity */}
           <div>
-            {/* Name as system identifier */}
             <div className="mb-6">
               <p className="mb-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">
                 engineer.identity
@@ -74,7 +71,6 @@ export function Hero() {
               </h1>
             </div>
 
-            {/* Role */}
             <div className="mb-8">
               <p className="font-mono text-lg text-accent sm:text-xl">
                 {title}
@@ -82,7 +78,6 @@ export function Hero() {
               <p className="mt-1 text-muted-foreground">{subtitle}</p>
             </div>
 
-            {/* Mission statement */}
             <div className="mb-10 max-w-xl border-l-2 border-accent/30 pl-4">
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Software Engineer (DevOps & Cloud) on Microsoft Azure. I ship
@@ -93,25 +88,22 @@ export function Hero() {
               </p>
             </div>
 
-            {/* Quick stats */}
-            <div className="mb-10 grid grid-cols-3 gap-6">
+            <div className="mb-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
               <div>
                 <p className="font-mono text-2xl text-foreground">30%</p>
                 <p className="font-mono text-xs text-muted-foreground">
-                  azure cost reduction
+                  Azure cost reduction
                 </p>
                 <p className="font-mono text-2xs text-accent">
-                  for american express
+                  American Express infra
                 </p>
               </div>
               <div>
                 <p className="font-mono text-2xl text-foreground">20+</p>
                 <p className="font-mono text-xs text-muted-foreground">
-                  .net microservices
+                  .NET microservices
                 </p>
-                <p className="font-mono text-2xs text-accent">
-                  on aks via helm
-                </p>
+                <p className="font-mono text-2xs text-accent">on AKS via Helm</p>
               </div>
               <div>
                 <p className="font-mono text-2xl text-foreground">CI/CD</p>
@@ -124,7 +116,6 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Actions - terminal style */}
             <div className="flex flex-wrap gap-3">
               <a
                 href={`mailto:${email}`}
@@ -133,6 +124,17 @@ export function Hero() {
                 <span className="text-muted-foreground">$</span>
                 connect --email
               </a>
+              {resumeUrl && (
+                <a
+                  href={resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded border border-border px-4 py-2 font-mono text-sm text-muted-foreground transition-colors hover:border-accent/50 hover:text-foreground"
+                >
+                  <span className="text-accent">$</span>
+                  download --resume
+                </a>
+              )}
               {social.github && (
                 <a
                   href={social.github}
@@ -158,17 +160,14 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right: Tech stack visualization */}
           <div className="relative">
             <div className="rounded-lg border border-border bg-card/50 p-6">
-              {/* Header */}
               <div className="mb-6 flex items-center justify-between border-b border-border pb-4">
                 <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                   tech.stack
                 </span>
               </div>
 
-              {/* Stack layers */}
               <div className="space-y-4">
                 {techLayers.map((layer, index) => (
                   <div key={layer.name} className="relative">
@@ -186,7 +185,6 @@ export function Hero() {
                 ))}
               </div>
 
-              {/* Footer */}
               <div className="mt-6 border-t border-border pt-4">
                 <div className="flex items-center justify-between font-mono text-xs text-muted-foreground">
                   <span>{techLayers.length} layers</span>
@@ -197,11 +195,10 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="mt-16 flex justify-center">
+        <div className="mt-12 flex justify-center sm:mt-16">
           <a
             href="#experience"
-            className="flex flex-col items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-accent"
+            className="scroll-cue flex flex-col items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-accent"
           >
             <span>scroll.down()</span>
             <Icon name="arrow-right" size={14} className="rotate-90" />

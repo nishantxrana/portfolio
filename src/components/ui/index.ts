@@ -8,3 +8,4 @@ export {
   CardContent,
 } from './Card'
 export { Icon } from './Icon'
+export { SkipLink } from './SkipLink'

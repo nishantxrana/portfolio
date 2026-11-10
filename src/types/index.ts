@@ -9,7 +9,7 @@ export interface Experience {
   location: string
   period: string
   current: boolean
-  highlights: { text: string; metric?: string }[]
+  highlights: { text: string; metric?: string; badge?: string }[]
   technologies: string[]
 }
 
@@ -68,7 +68,10 @@ export interface SiteConfig {
   phone: string
   location: string
   resumeUrl: string
+  siteUrl: string
   lastUpdated: string
+  /** Job availability status; omit or leave empty to hide from UI */
+  availability?: string
   social: {
     github: string
     linkedin: string

@@ -3,20 +3,19 @@ import { siteConfig } from '@/config'
 
 export function Education() {
   const showCertifications = siteConfig.sections.certifications
+  const certCount = certifications.length
 
   return (
     <section id="education" className="relative py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <div className="mb-12 flex items-center gap-4">
-          <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
+          <h2 className="font-mono text-sm font-medium uppercase tracking-wider text-foreground">
             credentials.log
           </h2>
           <div className="h-px flex-1 bg-border" />
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2">
-          {/* Education */}
           <div>
             <div className="mb-6 flex items-center gap-2">
               <span className="font-mono text-xs text-accent">01</span>
@@ -29,7 +28,7 @@ export function Education() {
               {education.map((edu, index) => (
                 <div
                   key={edu.id}
-                  className={`rounded border border-border bg-card/30 p-4 ${
+                  className={`rounded border border-border bg-card/50 p-4 ${
                     index === 0 ? 'border-accent/30' : ''
                   }`}
                 >
@@ -58,7 +57,6 @@ export function Education() {
             </div>
           </div>
 
-          {/* Certifications */}
           {showCertifications && (
             <div>
               <div className="mb-6 flex items-center gap-2">
@@ -93,9 +91,8 @@ export function Education() {
                 ))}
               </div>
 
-              {/* Certification badge visual */}
-              <div className="mt-6 flex items-center gap-3 rounded border border-border bg-card/30 p-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded bg-[#0078d4] font-mono text-sm font-bold text-white">
+              <div className="mt-6 flex items-center gap-3 rounded border border-border bg-card/50 p-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded bg-accent/20 font-mono text-sm font-bold text-accent">
                   MS
                 </div>
                 <div>
@@ -103,7 +100,7 @@ export function Education() {
                     Microsoft Certified
                   </p>
                   <p className="font-mono text-sm text-foreground">
-                    2x Azure Associate
+                    {certCount}x Azure Associate
                   </p>
                 </div>
               </div>

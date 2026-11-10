@@ -1,13 +1,21 @@
 import { projects } from '@/data'
+import { siteConfig } from '@/config'
 import { Icon } from '@/components/ui'
 
+function hasPublicLinks(project: (typeof projects)[number]) {
+  return Boolean(project.links?.github || project.links?.live)
+}
+
 export function Projects() {
+  const reposUrl = siteConfig.social.github
+    ? `${siteConfig.social.github.replace(/\/$/, '')}?tab=repositories`
+    : ''
+
   return (
     <section id="projects" className="relative py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <div className="mb-12 flex items-center gap-4">
-          <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
+          <h2 className="font-mono text-sm font-medium uppercase tracking-wider text-foreground">
             architecture.registry
           </h2>
           <div className="h-px flex-1 bg-border" />
@@ -16,20 +24,20 @@ export function Projects() {
           </span>
         </div>
 
-        {/* Projects grid */}
         <div className="space-y-8">
           {projects.map((project, index) => (
             <article
               key={project.id}
-              className="group rounded-lg border border-border bg-card/30 transition-colors hover:border-accent/30"
+              className="group rounded-lg border border-border bg-card/50 transition-colors hover:border-accent/30"
             >
-              {/* Project header bar */}
-              <div className="flex items-center justify-between border-b border-border px-6 py-3">
-                <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-6 py-3">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   <span className="font-mono text-xs text-accent">
                     #{String(index + 1).padStart(2, '0')}
                   </span>
-                  <span className="text-border">│</span>
+                  <span className="hidden text-border sm:inline" aria-hidden="true">
+                    │
+                  </span>
                   <span className="font-mono text-xs text-muted-foreground">
                     {project.id}
                   </span>
@@ -43,7 +51,7 @@ export function Projects() {
                     {project.status}
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   {project.links?.github && (
                     <a
                       href={project.links.github}
@@ -66,24 +74,25 @@ export function Projects() {
                       live
                     </a>
                   )}
+                  {!hasPublicLinks(project) && (
+                    <span className="font-mono text-xs text-muted-foreground">
+                      Private — walkthrough on request
+                    </span>
+                  )}
                 </div>
               </div>
 
               <div className="p-6">
                 <div className="grid gap-8 lg:grid-cols-[1fr,280px]">
-                  {/* Main content */}
                   <div>
-                    {/* Title */}
                     <h3 className="mb-2 text-xl font-medium text-foreground">
                       {project.title}
                     </h3>
 
-                    {/* Description as problem statement */}
                     <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
                       {project.description}
                     </p>
 
-                    {/* Highlights as implementation details */}
                     <div className="space-y-4">
                       <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                         implementation.details
@@ -102,13 +111,11 @@ export function Projects() {
                     </div>
                   </div>
 
-                  {/* Sidebar: Architecture overview */}
                   <div className="rounded border border-border bg-background/50 p-4">
                     <p className="mb-4 font-mono text-xs uppercase tracking-wider text-muted-foreground">
                       stack.overview
                     </p>
 
-                    {/* Visual stack representation */}
                     <div className="space-y-2">
                       {project.techStack.map((tech, i) => (
                         <div key={tech} className="flex items-center gap-2">
@@ -123,7 +130,6 @@ export function Projects() {
                       ))}
                     </div>
 
-                    {/* Project stats */}
                     {project.stat && (
                       <div className="mt-4 border-t border-border pt-4 text-center">
                         <p className="font-mono text-lg text-foreground">
@@ -141,19 +147,20 @@ export function Projects() {
           ))}
         </div>
 
-        {/* More projects link */}
-        <div className="mt-12 flex justify-center">
-          <a
-            href="https://github.com/nishantxrana?tab=repositories"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-sm text-muted-foreground transition-colors hover:text-accent"
-          >
-            <span className="text-accent">$</span>
-            ls ~/projects --all
-            <Icon name="external" size={14} />
-          </a>
-        </div>
+        {reposUrl && (
+          <div className="mt-12 flex justify-center">
+            <a
+              href={reposUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-mono text-sm text-muted-foreground transition-colors hover:text-accent"
+            >
+              <span className="text-accent">$</span>
+              ls ~/projects --all
+              <Icon name="external" size={14} />
+            </a>
+          </div>
+        )}
       </div>
     </section>
   )

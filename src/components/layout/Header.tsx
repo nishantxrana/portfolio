@@ -6,6 +6,7 @@ const navLinks = [
   { href: '#experience', label: 'experience' },
   { href: '#projects', label: 'projects' },
   { href: '#skills', label: 'skills' },
+  { href: '#education', label: 'education' },
   { href: '#contact', label: 'contact' },
 ] as const
 
@@ -39,7 +40,6 @@ export function Header() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-sm">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo / System name */}
         <a
           href="#"
           className="flex items-center gap-2 font-mono text-sm transition-colors hover:text-accent"
@@ -55,7 +55,6 @@ export function Header() {
           <span className="text-muted-foreground">portfolio</span>
         </a>
 
-        {/* Navigation - desktop */}
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {navLinks.map((link) => (
             <a
@@ -68,14 +67,13 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           {social.github && (
             <a
               href={social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="flex h-10 w-10 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               aria-label="GitHub"
             >
               <Icon name="github" size={16} />
@@ -86,7 +84,7 @@ export function Header() {
               href={social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-8 w-8 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="flex h-10 w-10 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               aria-label="LinkedIn"
             >
               <Icon name="linkedin" size={16} />
@@ -97,17 +95,16 @@ export function Header() {
               href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 hidden items-center gap-1.5 rounded border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-accent/50 hover:text-foreground sm:flex"
+              className="ml-1 hidden items-center gap-1.5 rounded border border-border px-3 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-accent/50 hover:text-foreground sm:flex"
             >
               <Icon name="download" size={12} />
               resume
             </a>
           )}
 
-          {/* Mobile menu toggle */}
           <button
             type="button"
-            className="ml-1 flex h-8 w-8 items-center justify-center rounded border border-border text-muted-foreground transition-colors hover:border-accent/50 hover:text-foreground md:hidden"
+            className="ml-1 flex h-10 w-10 items-center justify-center rounded border border-border text-muted-foreground transition-colors hover:border-accent/50 hover:text-foreground md:hidden"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
             aria-controls={menuId}
@@ -137,7 +134,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile menu panel */}
       {menuOpen && (
         <nav
           id={menuId}

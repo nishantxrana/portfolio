@@ -46,6 +46,9 @@ export const env = {
   // Resume
   resumeUrl: getEnvVar('VITE_RESUME_URL', ''),
 
+  // Availability (empty = hidden in UI)
+  availability: getEnvVar('VITE_AVAILABILITY', ''),
+
   // Site Metadata
   siteUrl: getEnvVar('VITE_SITE_URL', 'https://nishantxrana.com'),
   ogImage: getEnvVar('VITE_OG_IMAGE', 'https://nishantxrana.com/og-image.png'),

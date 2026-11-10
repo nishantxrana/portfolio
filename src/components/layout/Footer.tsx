@@ -1,7 +1,7 @@
 import { siteConfig } from '@/config'
 
 export function Footer() {
-  const { name } = siteConfig
+  const { name, lastUpdated } = siteConfig
   const currentYear = new Date().getFullYear()
 
   return (
@@ -14,14 +14,7 @@ export function Footer() {
               {currentYear} {name}
             </span>
           </div>
-          <div className="flex items-center gap-4">
-            <span>react + typescript + tailwind</span>
-            <span className="text-border">│</span>
-            <span className="flex items-center gap-1.5">
-              <span className="status-dot scale-75" />
-              <span className="text-accent">deployed</span>
-            </span>
-          </div>
+          <span>last updated: {lastUpdated}</span>
         </div>
       </div>
     </footer>
