@@ -112,7 +112,10 @@ export function buildPortfolioMarkdown(): string {
   if (siteConfig.sections.certifications && certifications.length > 0) {
     lines.push('## Certifications', '')
     for (const cert of certifications) {
-      lines.push(`- **${cert.name}** — ${cert.issuer} (${cert.date})`)
+      const verify = cert.credentialUrl ? ` — [verify](${cert.credentialUrl})` : ''
+      lines.push(
+        `- **${cert.name}** — ${cert.issuer} (${cert.date})${verify}`
+      )
     }
     lines.push('')
   }

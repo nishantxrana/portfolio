@@ -21,11 +21,15 @@ export const certifications: Certification[] = [
     name: 'Microsoft Certified: Azure Developer Associate (AZ-204)',
     issuer: 'Microsoft',
     date: 'May 2025',
+    credentialUrl:
+      'https://learn.microsoft.com/api/credentials/share/en-us/Nishant-2490/86227C61FF8E2B7D?sharingId=7C5B7CF861970B97',
   },
   {
     id: 'azure-ai',
     name: 'Microsoft Certified: Azure AI Engineer Associate (AI-102)',
     issuer: 'Microsoft',
     date: 'May 2025',
+    credentialUrl:
+      'https://learn.microsoft.com/api/credentials/share/en-us/nishantxrana/3BF09ED76E73C1F0?sharingId=749C77E590B75703',
   },
 ]

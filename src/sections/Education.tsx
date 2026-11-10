@@ -1,9 +1,9 @@
 import { education, certifications } from '@/data'
 import { siteConfig } from '@/config'
+import { Icon } from '@/components/ui'
 
 export function Education() {
   const showCertifications = siteConfig.sections.certifications
-  const certCount = certifications.length
 
   return (
     <section id="education" className="relative py-20">
@@ -72,37 +72,32 @@ export function Education() {
                     key={cert.id}
                     className="rounded border border-accent/30 bg-accent/5 p-4"
                   >
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
+                    <div className="flex flex-wrap items-start justify-between gap-4">
+                      <div className="min-w-0 flex-1">
                         <p className="font-medium text-foreground">
                           {cert.name}
                         </p>
                         <p className="mt-1 font-mono text-xs text-accent">
                           {cert.issuer}
                         </p>
+                        {cert.credentialUrl && (
+                          <a
+                            href={cert.credentialUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-3 inline-flex items-center gap-1.5 rounded border border-accent/40 bg-accent/10 px-2.5 py-1 font-mono text-xs text-accent transition-colors hover:border-accent hover:bg-accent/20"
+                          >
+                            verify
+                            <Icon name="external" size={12} />
+                          </a>
+                        )}
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="rounded bg-accent/20 px-2 py-0.5 font-mono text-xs text-accent">
-                          {cert.date}
-                        </span>
-                      </div>
+                      <span className="rounded bg-accent/20 px-2 py-0.5 font-mono text-xs text-accent">
+                        {cert.date}
+                      </span>
                     </div>
                   </div>
                 ))}
-              </div>
-
-              <div className="mt-6 flex items-center gap-3 rounded border border-border bg-card/50 p-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded bg-accent/20 font-mono text-sm font-bold text-accent">
-                  MS
-                </div>
-                <div>
-                  <p className="font-mono text-xs text-muted-foreground">
-                    Microsoft Certified
-                  </p>
-                  <p className="font-mono text-sm text-foreground">
-                    {certCount}x Azure Associate
-                  </p>
-                </div>
               </div>
             </div>
           )}

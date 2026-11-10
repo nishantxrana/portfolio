@@ -35,8 +35,8 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 'azure-devops-mcp-gateway',
-    title: 'Azure DevOps MCP Gateway',
+    id: 'azuremcpgateway',
+    title: 'AzureMcpGateway',
     description:
       'Multi-organization gateway on Azure App Service that lets Copilot Studio agents read pull requests, pipelines and work items—with secrets in Azure Key Vault.',
     techStack: [
@@ -50,10 +50,13 @@ export const projects: Project[] = [
       'Single gateway across multiple Azure DevOps organizations',
       'Exposes PRs, pipelines and work items to Copilot Studio agents',
     ],
-    status: 'internal',
+    status: 'open-source',
     stat: {
       value: '3',
       label: 'resource types exposed',
+    },
+    links: {
+      github: 'https://github.com/nishantxrana/AzureMcpGateway',
     },
   },
   {
