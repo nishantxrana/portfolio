@@ -1,4 +1,5 @@
 import { type ComponentProps } from 'react'
+import { cn } from '@/utils'
 
 interface ContainerProps extends ComponentProps<'div'> {
   size?: 'sm' | 'md' | 'lg' | 'xl'
@@ -7,18 +8,14 @@ interface ContainerProps extends ComponentProps<'div'> {
 const sizeStyles = {
   sm: 'max-w-2xl',
   md: 'max-w-4xl',
-  lg: 'max-w-5xl',
-  xl: 'max-w-6xl',
+  lg: 'max-w-6xl',
+  xl: 'max-w-7xl',
 }
 
-export function Container({
-  size = 'lg',
-  className = '',
-  ...props
-}: ContainerProps) {
+export function Container({ size = 'lg', className, ...props }: ContainerProps) {
   return (
     <div
-      className={`mx-auto w-full px-4 sm:px-6 lg:px-8 ${sizeStyles[size]} ${className}`}
+      className={cn('mx-auto w-full px-5 sm:px-8', sizeStyles[size], className)}
       {...props}
     />
   )
