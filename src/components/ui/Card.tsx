@@ -1,55 +1,38 @@
-import { type ComponentProps, forwardRef } from 'react'
+import { type ComponentProps, type PointerEvent, forwardRef } from 'react'
+import { cn } from '@/utils'
 
 interface CardProps extends ComponentProps<'div'> {
-  hover?: boolean
+  /** Pointer-following glow + border highlight */
+  spotlight?: boolean
+  as?: 'div' | 'article' | 'li'
+}
+
+function trackPointer(event: PointerEvent<HTMLElement>) {
+  const el = event.currentTarget
+  const rect = el.getBoundingClientRect()
+  el.style.setProperty('--mx', `${event.clientX - rect.left}px`)
+  el.style.setProperty('--my', `${event.clientY - rect.top}px`)
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className = '', hover = false, ...props }, ref) => {
-    const hoverStyles = hover
-      ? 'hover:border-accent/30 hover:bg-card/80 transition-all duration-300'
-      : ''
-
+  ({ className, spotlight = false, as = 'div', onPointerMove, ...props }, ref) => {
+    // Semantic tag swap; all candidates share div-compatible props.
+    const Tag = as as 'div'
     return (
-      <div
-        ref={ref}
-        className={`rounded-xl border border-border bg-card p-6 ${hoverStyles} ${className}`}
-        {...props}
-      />
+    <Tag
+      ref={ref}
+      className={cn('surface', spotlight && 'spotlight', className)}
+      onPointerMove={
+        spotlight
+          ? (e: PointerEvent<HTMLDivElement>) => {
+              trackPointer(e)
+              onPointerMove?.(e)
+            }
+          : onPointerMove
+      }
+      {...props}
+    />
     )
   }
 )
-
 Card.displayName = 'Card'
-
-export function CardHeader({
-  className = '',
-  ...props
-}: ComponentProps<'div'>) {
-  return <div className={`mb-4 ${className}`} {...props} />
-}
-
-export function CardTitle({ className = '', ...props }: ComponentProps<'h3'>) {
-  return (
-    <h3
-      className={`text-lg font-semibold text-foreground ${className}`}
-      {...props}
-    />
-  )
-}
-
-export function CardDescription({
-  className = '',
-  ...props
-}: ComponentProps<'p'>) {
-  return (
-    <p className={`text-sm text-muted-foreground ${className}`} {...props} />
-  )
-}
-
-export function CardContent({
-  className = '',
-  ...props
-}: ComponentProps<'div'>) {
-  return <div className={className} {...props} />
-}
