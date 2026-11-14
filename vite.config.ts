@@ -1,12 +1,15 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const rootDir = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(rootDir, './src'),
     },
   },
   server: {
@@ -15,7 +18,8 @@ export default defineConfig({
       'localhost',
       '127.0.0.1',
       'sure-ant-informally.ngrok-free.app',
-      'notbatman.me'
+      'data-safari-ivory.ngrok-free.dev',
+      'nishantxrana.com'
     ],
   },
   build: {
