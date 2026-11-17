@@ -13,7 +13,7 @@
         },
         {
           "key": "x-markdown-tokens",
-          "value": "1498"
+          "value": "1496"
         }
       ]
     }
@@ -32,7 +32,7 @@
       "headers": {
         "Content-Type": "text/markdown; charset=utf-8",
         "Vary": "Accept",
-        "x-markdown-tokens": "1498"
+        "x-markdown-tokens": "1496"
       }
     },
     {

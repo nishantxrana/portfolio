@@ -26,7 +26,7 @@ const pods = [
 ].slice(0, 6)
 
 const events = [
-  'Normal  Scheduled  Successfully assigned prod/insightops to aks-nodepool1-0',
+  'Normal  Scheduled  Successfully assigned prod/argus to aks-nodepool1-0',
   'Normal  Pulled     Container image pulled in 1.2s',
   'Normal  Created    Created container azuremcpgateway',
   'Normal  Started    Started container tooldock',

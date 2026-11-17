@@ -8,8 +8,8 @@ import type { Project } from '@/types'
 
 export const projects: Project[] = [
   {
-    id: 'insightops',
-    title: 'InsightOps',
+    id: 'argus',
+    title: 'Argus',
     description:
       'AI-powered DevOps monitoring platform on Azure App Service for a 120-person engineering org—real-time pipeline visibility with failure diagnosis and chat alerts.',
     techStack: [
@@ -31,7 +31,7 @@ export const projects: Project[] = [
       label: 'engineers served',
     },
     links: {
-      github: 'https://github.com/nishantxrana/insightops',
+      github: 'https://github.com/nishantxrana/Argus',
     },
   },
   {
